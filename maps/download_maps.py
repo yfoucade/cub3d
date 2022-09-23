@@ -38,18 +38,18 @@ else:
 				if chunk:
 					output_file.write(chunk)
 
-try:
-	current_branch = subprocess.check_output(["git", "rev-parse", "--abbrev-ref", "HEAD"]).decode("utf-8").strip()
-except:
-	print("❌  Error while getting current branch")
-	exit(1)
+	try:
+		current_branch = subprocess.check_output(["git", "rev-parse", "--abbrev-ref", "HEAD"]).decode("utf-8").strip()
+	except:
+		print("❌  Error while getting current branch")
+		exit(1)
 
-if current_branch == "master" or current_branch == "main":
-	print("💙 Avoiding unsafe push to branch", current_branch)
-	exit(0)
+	if current_branch == "master" or current_branch == "main":
+		print("💙 Avoiding unsafe push to branch", current_branch)
+		exit(0)
 
-# Push changes to github
-print("📤 Pushing changes to GitHub -- branch {}".format(current_branch))
-subprocess.run(["git", "add", "*.cub"])
-subprocess.run(["git", "commit", "-m", "update: updated map folder (automatic push)"])
-subprocess.run(["git", "push"])
+	# Push changes to github
+	print("📤 Pushing changes to GitHub -- branch {}".format(current_branch))
+	subprocess.run(["git", "add", "*.cub"])
+	subprocess.run(["git", "commit", "-m", "update: updated map folder (automatic push)"])
+	subprocess.run(["git", "push"])
