@@ -8,7 +8,7 @@ SRCS =  main.c \
 		parsing/data_sanity.c \
 		parsing/name_sanity.c \
 		parsing/run_parser.c \
-		parsing/buffer_map.c \
+		parsing/buffer_file.c \
 
 OBJS := ${SRCS:.c=.o}
 
