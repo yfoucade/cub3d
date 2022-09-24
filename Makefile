@@ -9,6 +9,11 @@ SRCS =  main.c \
 		parsing/name_sanity.c \
 		parsing/run_parser.c \
 		parsing/buffer_file.c \
+		parsing/parse_textures.c \
+		parsing/parse_rgb.c \
+		debug/print_game_struct.c \
+		debug/print_color_struct.c \
+		memory/destroy_game.c \
 
 OBJS := ${SRCS:.c=.o}
 
