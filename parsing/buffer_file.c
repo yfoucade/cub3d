@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   buffer_map.c                                       :+:      :+:    :+:   */
+/*   buffer_file.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 22:38:59 by jallerha          #+#    #+#             */
-/*   Updated: 2022/09/24 23:12:06 by jallerha         ###   ########.fr       */
+/*   Updated: 2022/09/24 23:36:51 by jallerha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ char	*ft_free_locals(char *line, char *tmp, char *output)
  * @param path Path to the file to buffer
  * @return char* Pointer to the buffer
 */
-char	*ft_buffer_map(char *path)
+char	*ft_buffer_file(char *path)
 {
 	char	*output;
 	char	*tmp;
