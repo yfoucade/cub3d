@@ -7,6 +7,8 @@ NM_BIN = nm
 SRCS =  main.c \
 		parsing/data_sanity.c \
 		parsing/name_sanity.c \
+		parsing/run_parser.c \
+		parsing/buffer_map.c \
 
 OBJS := ${SRCS:.c=.o}
 
@@ -41,8 +43,7 @@ fclean: clean
 re: fclean all
 
 norme:
-	@${NORMINETTE_BIN} ${SRCS} includes/so_long.h
-	make -C libft/ norme
+	@ ${NORMINETTE_BIN} ${SRCS} includes/parsing.h | grep -v "OK!"
 
 sym:
 	${NM_BIN} -n $(OBJS)
