@@ -6,7 +6,7 @@
 /*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/26 19:32:03 by jallerha          #+#    #+#             */
-/*   Updated: 2022/09/25 00:30:10 by jallerha         ###   ########.fr       */
+/*   Updated: 2022/09/25 00:55:10 by jallerha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,16 @@ t_chain_lst	*ft_split(char *str, char *word)
 	int			end;
 	int			sep_len;
 
-	output = ft_chain_init();
+	output = NULL;
 	sep_len = ft_strlen(word);
 	start = 0;
 	end = ft_index(str, word);
 	while (end != -1)
 	{
-		ft_chain_append(&output, ft_strcpyr(str, start, end));
+		if (!output)
+			output = ft_chain_new(ft_strcpyr(str, start, end));
+		else
+			ft_chain_append(&output, ft_strcpyr(str, start, end));
 		str += end + sep_len;
 		end = ft_index(str, word);
 	}
