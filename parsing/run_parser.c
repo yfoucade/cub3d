@@ -6,7 +6,7 @@
 /*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 15:05:17 by jallerha          #+#    #+#             */
-/*   Updated: 2022/09/24 23:11:59 by jallerha         ###   ########.fr       */
+/*   Updated: 2022/09/24 23:18:53 by jallerha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,15 @@
  * @brief Runs the parser on the given file
  * 
  * @param path Path to the map to parse
- * @return unsigned long A bitmask of errors
+ * @return t_game Game structure
  */
-unsigned long	ft_run_parser(char *path)
+t_game	ft_run_parser(char *path)
 {
-	unsigned long	errors;
+	t_game	game;
 
-	errors = 0;
-	if (ft_data_sanity(path, &errors) != 1)
-		return (errors);
-	ft_name_sanity(path, &errors);
-	return (errors);
+	ft_bzero(&game, sizeof(t_game));
+	if (ft_data_sanity(path, &game.errors) != 1)
+		return (game);
+	ft_name_sanity(path, &game.errors);
+	return (game);
 }

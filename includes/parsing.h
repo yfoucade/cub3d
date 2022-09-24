@@ -6,7 +6,7 @@
 /*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 13:57:37 by jallerha          #+#    #+#             */
-/*   Updated: 2022/09/24 23:17:51 by jallerha         ###   ########.fr       */
+/*   Updated: 2022/09/24 23:19:16 by jallerha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ typedef struct s_game
 
 int				ft_data_sanity(char *path, unsigned long *error_mask);
 int				ft_name_sanity(char *filename, unsigned long *errors);
-unsigned long	ft_run_parser(char *path);
+t_game			ft_run_parser(char *path);
 char			*ft_buffer_map(char *path);
 
 #endif
