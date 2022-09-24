@@ -7,7 +7,6 @@ NM_BIN = nm
 SRCS =  main.c \
 		parsing/data_sanity.c \
 		parsing/name_sanity.c \
-		linter/push_error.c \
 
 OBJS := ${SRCS:.c=.o}
 
