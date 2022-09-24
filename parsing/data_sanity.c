@@ -6,7 +6,7 @@
 /*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 13:50:43 by jallerha          #+#    #+#             */
-/*   Updated: 2022/09/24 23:11:30 by jallerha         ###   ########.fr       */
+/*   Updated: 2022/09/24 23:25:31 by jallerha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@
  * checks if they are ascii or not. Update bitmask accordingly.
  *
  * @param fd file descriptor of the file to check
- * @param error_mask pointer to error mask
+ * @param game pointer to the game structure
  * @return int 1 if there is no error, something else otherwise
 */
-int	ft_data_sanity(char *path, unsigned long *error_mask)
+int	ft_data_sanity(char *path, t_game *game)
 {
 	int		fd;
 	int		i;
@@ -37,14 +37,14 @@ int	ft_data_sanity(char *path, unsigned long *error_mask)
 	fd = open(path, O_RDONLY);
 	i = 0;
 	if (fd == -1)
-		return (*error_mask |= ERR_OPEN);
+		return (game->errors |= ERR_OPEN);
 	if (read(fd, buffer, 256) == -1)
-		return (*error_mask |= ERR_READ);
+		return (game->errors |= ERR_READ);
 	close(fd);
 	while (buffer[i])
 	{
 		if (!ft_isascii(buffer[i]))
-			return (*error_mask |= ERR_CONT);
+			return (game->errors |= ERR_CONT);
 		i++;
 	}
 	return (1);

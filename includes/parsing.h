@@ -6,7 +6,7 @@
 /*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 13:57:37 by jallerha          #+#    #+#             */
-/*   Updated: 2022/09/24 23:22:52 by jallerha         ###   ########.fr       */
+/*   Updated: 2022/09/24 23:36:51 by jallerha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
+
+# include <stdio.h>
 
 // -- Parsing error bitmask --
 # define ERR_OPEN	 0b00000000000000000000000000000001
@@ -59,9 +61,9 @@ typedef struct s_game
 	t_color			ceiling_color;
 }	t_game;
 
-int				ft_data_sanity(char *path, unsigned long *error_mask);
-int				ft_name_sanity(char *filename, unsigned long *errors);
-t_game			ft_run_parser(char *path);
-char			*ft_buffer_map(char *path);
+int		ft_data_sanity(char *path, t_game *game);
+int		ft_name_sanity(char *filename, t_game *game);
+t_game	ft_run_parser(char *path);
+char	*ft_buffer_file(char *path);
 
 #endif
