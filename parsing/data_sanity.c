@@ -6,7 +6,7 @@
 /*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 13:50:43 by jallerha          #+#    #+#             */
-/*   Updated: 2022/09/23 14:47:55 by jallerha         ###   ########.fr       */
+/*   Updated: 2022/09/24 23:11:30 by jallerha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,54 +15,37 @@
 // allocate a huge amount of memory for a file that is not a valid map.
 // (such as /dev/(u)random or any other kind)
 
-// in order to collect a safe-sample, we will only read two lines in the file
+// in order to collect a safe-sample, we will only read 256 bytes in the file
 // and check if they are ascii or not.
 
 #include "parsing.h"
 
 /**
- * @brief This function reads first two lines of a file and check if they are
- * ascii or not.
- * 
+ * @brief This function takes a path to the map, reads first 256 bytes and
+ * checks if they are ascii or not. Update bitmask accordingly.
+ *
  * @param fd file descriptor of the file to check
- * @param output pointer to a variable that will contains the entire map
- * @return int 1 if the file is ascii, 0 otherwise
+ * @param error_mask pointer to error mask
+ * @return int 1 if there is no error, something else otherwise
 */
-int	ft_data_sanity(int fd, char **output)
+int	ft_data_sanity(char *path, unsigned long *error_mask)
 {
-	char	*line1;
-	char	*line2;
+	int		fd;
 	int		i;
-	int		sanity_flag;
+	char	buffer[256];
 
+	fd = open(path, O_RDONLY);
 	i = 0;
-	sanity_flag = 1;
-	line1 = get_next_line(fd);
-	line2 = get_next_line(fd);
-	if (line1 == NULL || line2 == NULL)
-		sanity_flag = 0;
-	while (line1[i] && sanity_flag)
+	if (fd == -1)
+		return (*error_mask |= ERR_OPEN);
+	if (read(fd, buffer, 256) == -1)
+		return (*error_mask |= ERR_READ);
+	close(fd);
+	while (buffer[i])
 	{
-		if (!ft_isascii(line1[i]))
-			sanity_flag = 0;
+		if (!ft_isascii(buffer[i]))
+			return (*error_mask |= ERR_CONT);
 		i++;
 	}
-	i = 0;
-	while (line2[i] && sanity_flag)
-	{
-		if (!ft_isascii(line2[i]))
-			sanity_flag = 0;
-		i++;
-	}
-	if (sanity_flag)
-	{
-		*output = ft_strsjoin(line1, line2);
-		*output = ft_strsjoin(*output, get_next_line(fd));
-	}
-	else
-	{
-		free(line1);
-		free(line2);
-	}
-	return (sanity_flag);
+	return (1);
 }
