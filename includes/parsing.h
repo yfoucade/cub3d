@@ -6,7 +6,7 @@
 /*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 13:57:37 by jallerha          #+#    #+#             */
-/*   Updated: 2022/09/25 01:12:47 by jallerha         ###   ########.fr       */
+/*   Updated: 2022/09/25 22:47:10 by jallerha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "neo_libft.h"
 # include "game.h"
+# include "linter.h"
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
