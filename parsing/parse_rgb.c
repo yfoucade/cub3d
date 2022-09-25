@@ -6,7 +6,7 @@
 /*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 00:57:10 by jallerha          #+#    #+#             */
-/*   Updated: 2022/09/25 01:24:36 by jallerha         ###   ########.fr       */
+/*   Updated: 2022/09/26 00:21:38 by jallerha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_digit_only(char *s)
 	i = 0;
 	while (s[i])
 	{
-		if (!ft_isdigit(s[i]))
+		if (!ft_isdigit(s[i]) || s[i] == '+')
 			return (0);
 		i++;
 	}
@@ -39,13 +39,9 @@ int	ft_digit_only(char *s)
 int	ft_set_val(t_color *color, char *s, int index)
 {
 	int	val;
-	int	length;
 
 	ft_strip(s);
-	length = ft_strlen(s);
 	if (!ft_digit_only(s))
-		return (0);
-	if (length > 3 || length == 0)
 		return (0);
 	val = ft_atoi(s);
 	if (val < 0 || val > 255)
