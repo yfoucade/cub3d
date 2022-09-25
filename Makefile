@@ -14,6 +14,7 @@ SRCS =  main.c \
 		debug/print_game_struct.c \
 		debug/print_color_struct.c \
 		memory/destroy_game.c \
+		linter/print_errors.c \
 
 OBJS := ${SRCS:.c=.o}
 
@@ -48,9 +49,12 @@ fclean: clean
 re: fclean all
 
 norme:
-	@ ${NORMINETTE_BIN} ${SRCS} includes/parsing.h | grep -v "OK!"
-
+	@ ${NORMINETTE_BIN} ${SRCS} includes
 sym:
 	${NM_BIN} -n $(OBJS)
+qtest:
+	@ python3 tests.py -q
+test:
+	@ python3 tests.py
 
-.PHONY: all clean fclean re norme sym
+.PHONY: all clean fclean re norme sym qtest test
