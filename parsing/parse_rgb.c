@@ -6,7 +6,7 @@
 /*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 00:57:10 by jallerha          #+#    #+#             */
-/*   Updated: 2022/09/26 00:21:38 by jallerha         ###   ########.fr       */
+/*   Updated: 2022/09/26 00:24:52 by jallerha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_digit_only(char *s)
 	i = 0;
 	while (s[i])
 	{
-		if (!ft_isdigit(s[i]) || s[i] == '+')
+		if (!ft_isdigit(s[i]) && s[i] != '+')
 			return (0);
 		i++;
 	}
