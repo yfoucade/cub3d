@@ -6,7 +6,7 @@
 /*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 23:42:54 by jallerha          #+#    #+#             */
-/*   Updated: 2022/09/25 01:04:32 by jallerha         ###   ########.fr       */
+/*   Updated: 2022/09/25 22:53:51 by jallerha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct s_game
 	char			*so_path;
 	char			*we_path;
 	char			*ea_path;
+	char			*filename;
 	unsigned long	errors;
 	t_color			floor_color;
 	t_color			ceiling_color;
