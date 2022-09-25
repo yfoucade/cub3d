@@ -6,19 +6,11 @@
 /*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 23:24:19 by jallerha          #+#    #+#             */
-/*   Updated: 2022/09/25 23:13:11 by jallerha         ###   ########.fr       */
+/*   Updated: 2022/09/26 00:04:47 by jallerha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
-
-// Order check values :
-// 6 = NO
-// 5 = SO
-// 4 = WE
-// 3 = EA
-// 2 = F
-// 1 = C
 
 int	is_empty(char *s)
 {
@@ -64,10 +56,11 @@ int	ft_correct_order(char *line, char *order)
 int	ft_get_value(char *line, t_game *game, char *order_check)
 {
 	char	*output;
-	char	key[2];
+	char	key[3];
 
 	key[0] = line[0];
 	key[1] = line[1];
+	key[2] = '\0';
 	if (!ft_correct_order(key, order_check))
 		return (0);
 	output = ft_strdup(line + 2);
@@ -105,8 +98,7 @@ void	ft_parse_textures(t_game *game)
 		if (!is_empty(line))
 		{
 			if (!ft_get_value(line, game, &order_check))
-				game->errors |= ERR_MISS_NO << (6 - order_check);
-			order_check--;
+				game->errors |= ERR_MISS_NA << (6 - order_check);
 		}
 		free(tmp->content);
 		tmp = tmp->next;
