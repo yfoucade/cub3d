@@ -7,6 +7,7 @@ args.add_argument('-q', '--quiet', action='store_true', help='Suppress succeeded
 args = args.parse_args()
 
 maps = glob("maps/*")
+maps = [m for m in maps if not m.endswith(".py")]
 
 for map in maps:
 	expected = map.split('/')[-1].split("_")[0] == "ko"
