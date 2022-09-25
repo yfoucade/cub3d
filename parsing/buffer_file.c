@@ -6,7 +6,7 @@
 /*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 22:38:59 by jallerha          #+#    #+#             */
-/*   Updated: 2022/09/24 23:36:51 by jallerha         ###   ########.fr       */
+/*   Updated: 2022/09/25 23:19:49 by jallerha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@
 char	*ft_init(char **output, char **tmp, int *map_size)
 {
 	*map_size = 0;
-	*output = malloc(0);
+	*output = malloc(1);
+	*output[0] = '\0';
 	*tmp = NULL;
 	return (*output);
 }
