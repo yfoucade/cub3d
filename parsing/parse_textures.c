@@ -6,7 +6,7 @@
 /*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 23:24:19 by jallerha          #+#    #+#             */
-/*   Updated: 2022/09/26 00:04:47 by jallerha         ###   ########.fr       */
+/*   Updated: 2022/09/26 00:12:18 by jallerha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,17 +29,17 @@ int	is_empty(char *s)
 int	ft_correct_order(char *line, char *order)
 {
 	if (*order == 6)
-		return (ft_strcmp(line, "NO") == 0);
+		return (ft_strncmp(line, "NO", 2) == 0);
 	else if (*order == 5)
-		return (ft_strcmp(line, "SO") == 0);
+		return (ft_strncmp(line, "SO", 2) == 0);
 	else if (*order == 4)
-		return (ft_strcmp(line, "WE") == 0);
+		return (ft_strncmp(line, "WE", 2) == 0);
 	else if (*order == 3)
-		return (ft_strcmp(line, "EA") == 0);
+		return (ft_strncmp(line, "EA", 2) == 0);
 	else if (*order == 2)
-		return (ft_strcmp(line, "F ") == 0);
+		return (ft_strncmp(line, "F ", 2) == 0);
 	else if (*order == 1)
-		return (ft_strcmp(line, "C ") == 0);
+		return (ft_strncmp(line, "C ", 2) == 0);
 	return (0);
 }
 
@@ -56,13 +56,15 @@ int	ft_correct_order(char *line, char *order)
 int	ft_get_value(char *line, t_game *game, char *order_check)
 {
 	char	*output;
-	char	key[3];
+	char	key[2];
 
 	key[0] = line[0];
 	key[1] = line[1];
-	key[2] = '\0';
 	if (!ft_correct_order(key, order_check))
-		return (0);
+	{
+		game->errors |= ERR_INV_ODR;
+		return (*order_check = -128);
+	}
 	output = ft_strdup(line + 2);
 	ft_strip(output);
 	if (*order_check == 6)
@@ -77,7 +79,6 @@ int	ft_get_value(char *line, t_game *game, char *order_check)
 		game->floor_color = ft_parse_rgb(output);
 	else if (*order_check == 1)
 		game->ceiling_color = ft_parse_rgb(output);
-	(*order_check)--;
 	return (1);
 }
 
@@ -98,7 +99,9 @@ void	ft_parse_textures(t_game *game)
 		if (!is_empty(line))
 		{
 			if (!ft_get_value(line, game, &order_check))
-				game->errors |= ERR_MISS_NA << (6 - order_check);
+				if (order_check >= 0)
+					game->errors |= ERR_MISS_NA << (6 - order_check);
+			order_check--;
 		}
 		free(tmp->content);
 		tmp = tmp->next;
