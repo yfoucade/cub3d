@@ -6,7 +6,7 @@
 /*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 23:24:19 by jallerha          #+#    #+#             */
-/*   Updated: 2022/09/25 01:12:16 by jallerha         ###   ########.fr       */
+/*   Updated: 2022/09/25 23:13:11 by jallerha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,8 @@ void	ft_parse_textures(t_game *game)
 		if (!is_empty(line))
 		{
 			if (!ft_get_value(line, game, &order_check))
-				game->errors |= ERR_MISS_NO << (order_check - 1);
+				game->errors |= ERR_MISS_NO << (6 - order_check);
+			order_check--;
 		}
 		free(tmp->content);
 		tmp = tmp->next;
