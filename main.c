@@ -6,7 +6,7 @@
 /*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 12:18:41 by jallerha          #+#    #+#             */
-/*   Updated: 2022/09/25 23:20:23 by jallerha         ###   ########.fr       */
+/*   Updated: 2022/09/26 00:24:12 by jallerha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,10 @@ int	main(int argc, char **argv)
 	game.filename = argv[1];
 	ft_print_errors(&game);
 	if (game.errors != 0)
+	{
+		printf("non-zero error mask : %lu\n", game.errors);
 		ret = 1;
+	}
 	ft_destroy_game(&game);
 	return (ret);
 }
