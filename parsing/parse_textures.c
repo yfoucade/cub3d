@@ -6,7 +6,7 @@
 /*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 23:24:19 by jallerha          #+#    #+#             */
-/*   Updated: 2022/09/26 00:18:17 by jallerha         ###   ########.fr       */
+/*   Updated: 2022/09/26 11:48:12 by jallerha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,20 +26,20 @@ int	is_empty(char *s)
 	return (1);
 }
 
-int	ft_correct_order(char *line, char *order)
+int	ft_correct_order(char *key, int *order)
 {
 	if (*order == 6)
-		return (ft_strncmp(line, "NO", 2) == 0);
+		return (ft_strncmp(key, "NO", 2) == 0);
 	else if (*order == 5)
-		return (ft_strncmp(line, "SO", 2) == 0);
+		return (ft_strncmp(key, "SO", 2) == 0);
 	else if (*order == 4)
-		return (ft_strncmp(line, "WE", 2) == 0);
+		return (ft_strncmp(key, "WE", 2) == 0);
 	else if (*order == 3)
-		return (ft_strncmp(line, "EA", 2) == 0);
+		return (ft_strncmp(key, "EA", 2) == 0);
 	else if (*order == 2)
-		return (ft_strncmp(line, "F ", 2) == 0);
+		return (ft_strncmp(key, "F ", 2) == 0);
 	else if (*order == 1)
-		return (ft_strncmp(line, "C ", 2) == 0);
+		return (ft_strncmp(key, "C ", 2) == 0);
 	return (0);
 }
 
@@ -50,10 +50,10 @@ int	ft_correct_order(char *line, char *order)
  * @param line Current line
  * @param game Pointer to game structure
  * @param order_check Order to check
- * @return char* Parsed value (striped)
+ * @return int* Parsed value (striped)
  */
 
-int	ft_get_value(char *line, t_game *game, char *order_check)
+int	ft_get_value(char *line, t_game *game, int *order_check)
 {
 	char	*output;
 	char	key[2];
@@ -84,7 +84,7 @@ int	ft_get_value(char *line, t_game *game, char *order_check)
 
 void	ft_parse_textures(t_game *game)
 {
-	char		order_check;
+	int			order_check;
 	char		*line;
 	t_chain_lst	*lines;
 	t_chain_lst	*tmp;
