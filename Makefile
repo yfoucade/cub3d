@@ -9,6 +9,7 @@ SRCS =  main.c \
 		parsing/name_sanity.c \
 		parsing/run_parser.c \
 		parsing/buffer_file.c \
+		parsing/buffer_map.c \
 		parsing/parse_textures.c \
 		parsing/parse_rgb.c \
 		parsing/check_textures.c \

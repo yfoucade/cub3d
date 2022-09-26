@@ -6,7 +6,7 @@
 /*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 13:57:37 by jallerha          #+#    #+#             */
-/*   Updated: 2022/09/26 12:28:04 by jallerha         ###   ########.fr       */
+/*   Updated: 2022/09/26 15:14:54 by jallerha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,6 @@ t_game	ft_run_parser(char *path);
 char	*ft_buffer_file(char *path);
 void	ft_parse_textures(t_game *game);
 void	ft_check_textures(t_game *game);
+int		is_empty(char *s);
+void	ft_buffer_map(t_game *game);
 #endif
