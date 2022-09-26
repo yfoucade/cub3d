@@ -6,13 +6,27 @@
 /*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 00:57:10 by jallerha          #+#    #+#             */
-/*   Updated: 2022/09/26 13:18:00 by jallerha         ###   ########.fr       */
+/*   Updated: 2022/09/26 14:08:22 by jallerha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game.h"
 #include "neo_libft.h"
 #include <stdio.h>
+
+void	ft_free_slices(t_chain_lst *lst, char *s)
+{
+	t_chain_lst	*tmp;
+
+	tmp = lst;
+	while (tmp)
+	{
+		free(tmp->content);
+		tmp = tmp->next;
+	}
+	ft_chain_clear(&lst);
+	free(s);
+}
 
 int	ft_digit_only(char *s, int *offset)
 {
@@ -56,7 +70,10 @@ int	ft_set_val(t_color *color, char *s, int index)
 	else if (index == 1)
 		color->g = ft_atoi(s);
 	else if (index == 2)
+	{
 		color->b = ft_atoi(s);
+		color->valid = 1;
+	}
 	return (1);
 }
 
@@ -88,13 +105,13 @@ t_color	ft_parse_rgb(char *s)
 	{
 		val = (char *) tmp->content;
 		if (!ft_set_val(&output, val, i))
+		{
+			ft_free_slices(lst, s);
 			return (output);
+		}
 		i++;
-		free(tmp->content);
 		tmp = tmp->next;
 	}
-	ft_chain_clear(&lst);
-	output.valid = 1;
-	free(s);
+	ft_free_slices(lst, s);
 	return (output);
 }
