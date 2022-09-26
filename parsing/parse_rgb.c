@@ -6,14 +6,14 @@
 /*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 00:57:10 by jallerha          #+#    #+#             */
-/*   Updated: 2022/09/26 14:16:22 by jallerha         ###   ########.fr       */
+/*   Updated: 2022/09/26 23:03:47 by jallerha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game.h"
 #include "neo_libft.h"
 
-void	ft_free_slices(t_chain_lst *lst, char *s)
+void	ft_free_slices(t_chain_lst *lst)
 {
 	t_chain_lst	*tmp;
 
@@ -24,7 +24,6 @@ void	ft_free_slices(t_chain_lst *lst, char *s)
 		tmp = tmp->next;
 	}
 	ft_chain_clear(&lst);
-	free(s);
 }
 
 int	ft_digit_only(char *s, int *offset)
@@ -118,6 +117,6 @@ t_color	ft_parse_rgb(char *s)
 	}
 	lst = ft_split(s, ",");
 	ft_parse(lst, &output);
-	ft_free_slices(lst, s);
+	ft_free_slices(lst);
 	return (output);
 }

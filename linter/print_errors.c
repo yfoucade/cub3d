@@ -6,7 +6,7 @@
 /*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 22:29:46 by jallerha          #+#    #+#             */
-/*   Updated: 2022/09/26 12:27:33 by jallerha         ###   ########.fr       */
+/*   Updated: 2022/09/26 23:15:24 by jallerha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	ft_io_errors(char *filename, unsigned long error_mask)
 			RESET, filename, RESET);
 }
 
-void	ft_missing_attributes_error(t_game *game)
+void	ft_invalid_settings_error(t_game *game)
 {
 	if (game->errors & ERR_INV_ODR)
 		ft_fprintf(STDERR, RED3"fatal: %s'%s' Invalid order in map settings%s\n",
@@ -53,6 +53,9 @@ void	ft_missing_attributes_error(t_game *game)
 			RESET, game->filename, RESET);
 	if (game->errors & ERR_MISS_C)
 		ft_fprintf(STDERR, RED3"fatal: %s'%s' Missing C color%s\n",
+			RESET, game->filename, RESET);
+	if (game->errors & ERR_DUP_SET)
+		ft_fprintf(STDERR, RED3"fatal: %s'%s' Duplicate map settings%s\n",
 			RESET, game->filename, RESET);
 }
 
@@ -85,7 +88,7 @@ void	ft_invalid_textures(t_game *game)
 void	ft_print_errors(t_game *game)
 {
 	ft_io_errors(game->filename, game->errors);
-	ft_missing_attributes_error(game);
+	ft_invalid_settings_error(game);
 	ft_invalid_colors(game);
 	ft_invalid_textures(game);
 }
