@@ -10,9 +10,9 @@ SRCS =  main.c \
 		parsing/run_parser.c \
 		parsing/buffer_file.c \
 		parsing/buffer_map.c \
-		parsing/parse_textures.c \
+		parsing/parse_settings.c \
 		parsing/parse_rgb.c \
-		parsing/check_textures.c \
+		parsing/check_settings.c \
 		debug/print_game_struct.c \
 		debug/print_color_struct.c \
 		memory/destroy_game.c \
