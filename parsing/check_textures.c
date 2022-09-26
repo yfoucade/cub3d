@@ -6,7 +6,7 @@
 /*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 12:23:14 by jallerha          #+#    #+#             */
-/*   Updated: 2022/09/26 12:26:12 by jallerha         ###   ########.fr       */
+/*   Updated: 2022/09/26 13:24:11 by jallerha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,12 @@ int	ft_check_texture(char *texture_path)
  */
 void	ft_check_textures(t_game *game)
 {
-	if (!ft_check_texture(game->no_path))
+	if (!game->no_path || !ft_check_texture(game->no_path))
 		game->errors |= ERR_INV_NO;
-	if (!ft_check_texture(game->so_path))
+	if (!game->so_path || !ft_check_texture(game->so_path))
 		game->errors |= ERR_INV_SO;
-	if (!ft_check_texture(game->we_path))
+	if (!game->we_path || !ft_check_texture(game->we_path))
 		game->errors |= ERR_INV_WE;
-	if (!ft_check_texture(game->ea_path))
+	if (!game->ea_path || !ft_check_texture(game->ea_path))
 		game->errors |= ERR_INV_EA;
 }
