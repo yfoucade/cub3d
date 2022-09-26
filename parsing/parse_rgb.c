@@ -6,7 +6,7 @@
 /*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 00:57:10 by jallerha          #+#    #+#             */
-/*   Updated: 2022/09/26 00:24:52 by jallerha         ###   ########.fr       */
+/*   Updated: 2022/09/26 12:18:08 by jallerha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	ft_set_val(t_color *color, char *s, int index)
 	int	val;
 
 	ft_strip(s);
-	if (!ft_digit_only(s))
+	if (!ft_digit_only(s) || ft_strlen(s) == 0)
 		return (0);
 	val = ft_atoi(s);
 	if (val < 0 || val > 255)
