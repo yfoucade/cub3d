@@ -50,11 +50,20 @@ re: fclean all
 
 norme:
 	@ ${NORMINETTE_BIN} ${SRCS} includes
+
 sym:
 	${NM_BIN} -n $(OBJS)
-qtest:
-	@ python3 tests.py -q
-test:
+
+test: all
 	@ python3 tests.py
 
-.PHONY: all clean fclean re norme sym qtest test
+test_all: all
+	@ python3 tests.py -a
+
+test_leaks: all
+	@ python3 tests.py -l
+
+test_errors:
+	@ python3 tests.py -e
+
+.PHONY: all clean fclean re norme sym test test_all test_leaks test_errors
