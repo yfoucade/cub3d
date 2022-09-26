@@ -45,10 +45,11 @@ for map in maps:
 		memory_error = False
 	print("Map : {}".format(map), end=" ")
 	if memory_error:
-		print("🐛")
+		print("🐛", end=" ")
 	if leaks:
-		print("🚰")
+		print("🚰", end=" ")
 	if expected != got:
-		print("❌")
+		print("❌", end=" ")
 	else:
-		print("✅")
+		print("✅", end=" ")
+	print()
