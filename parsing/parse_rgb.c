@@ -6,13 +6,12 @@
 /*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 00:57:10 by jallerha          #+#    #+#             */
-/*   Updated: 2022/09/26 14:08:22 by jallerha         ###   ########.fr       */
+/*   Updated: 2022/09/26 14:16:22 by jallerha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game.h"
 #include "neo_libft.h"
-#include <stdio.h>
 
 void	ft_free_slices(t_chain_lst *lst, char *s)
 {
@@ -77,6 +76,25 @@ int	ft_set_val(t_color *color, char *s, int index)
 	return (1);
 }
 
+int	ft_parse(t_chain_lst *lst, t_color *color)
+{
+	t_chain_lst	*tmp;
+	char		*val;
+	int			i;
+
+	tmp = lst;
+	i = 0;
+	while (tmp)
+	{
+		val = (char *) tmp->content;
+		if (!ft_set_val(color, val, i))
+			return (0);
+		tmp = tmp->next;
+		i++;
+	}
+	return (1);
+}
+
 /**
  * @brief Parse any r,g,b value and store it in a color struct.
  * Valid formats :
@@ -89,29 +107,17 @@ int	ft_set_val(t_color *color, char *s, int index)
 */
 t_color	ft_parse_rgb(char *s)
 {
-	char		*val;
-	int			i;
 	t_color		output;
 	t_chain_lst	*lst;
-	t_chain_lst	*tmp;
 
-	i = 0;
 	ft_bzero(&output, sizeof(t_color));
 	if (ft_count_words(s, ",") != 2)
-		return (output);
-	lst = ft_split(s, ",");
-	tmp = lst;
-	while (tmp)
 	{
-		val = (char *) tmp->content;
-		if (!ft_set_val(&output, val, i))
-		{
-			ft_free_slices(lst, s);
-			return (output);
-		}
-		i++;
-		tmp = tmp->next;
+		free(s);
+		return (output);
 	}
+	lst = ft_split(s, ",");
+	ft_parse(lst, &output);
 	ft_free_slices(lst, s);
 	return (output);
 }
