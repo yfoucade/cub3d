@@ -6,7 +6,7 @@
 /*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 00:57:10 by jallerha          #+#    #+#             */
-/*   Updated: 2022/09/26 12:18:08 by jallerha         ###   ########.fr       */
+/*   Updated: 2022/09/26 13:18:00 by jallerha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,17 @@
 #include "neo_libft.h"
 #include <stdio.h>
 
-int	ft_digit_only(char *s)
+int	ft_digit_only(char *s, int *offset)
 {
 	int	i;
 
 	i = 0;
+	if (s[i] == '+')
+		i++;
+	*offset = i;
 	while (s[i])
 	{
-		if (!ft_isdigit(s[i]) && s[i] != '+')
+		if (!ft_isdigit(s[i]))
 			return (0);
 		i++;
 	}
@@ -39,9 +42,11 @@ int	ft_digit_only(char *s)
 int	ft_set_val(t_color *color, char *s, int index)
 {
 	int	val;
+	int	offset;
 
+	offset = 0;
 	ft_strip(s);
-	if (!ft_digit_only(s) || ft_strlen(s) == 0)
+	if (!ft_digit_only(s, &offset) || ft_strlen(s + offset) == 0)
 		return (0);
 	val = ft_atoi(s);
 	if (val < 0 || val > 255)
