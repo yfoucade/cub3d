@@ -6,7 +6,7 @@
 /*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 15:08:36 by jallerha          #+#    #+#             */
-/*   Updated: 2022/09/26 15:18:52 by jallerha         ###   ########.fr       */
+/*   Updated: 2022/09/26 22:11:30 by jallerha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,37 +18,25 @@ void	ft_buffer_map(t_game *game)
 {
 	t_chain_lst	*lst;
 	t_chain_lst	*tmp;
-	int			i;
+	int			offset;
 	int			parameter_line;
 
-	i = 0;
+	offset = 0;
 	parameter_line = 6;
 	lst = ft_split(game->file_buffer, "\n");
 	tmp = lst;
 	while (tmp)
 	{
-		if (parameter_line > 0)
+		if (is_empty((char *) tmp->content))
+			offset += ft_strlen((char *) tmp->content) + 1;
+		else if (parameter_line > 0)
 		{
-			free(tmp->content);
-			ft_chain_pop(&lst, 0);
+			offset += ft_strlen((char *) tmp->content) + 1;
 			parameter_line--;
 		}
+		free(tmp->content);
 		tmp = tmp->next;
-		i++;
 	}
-	tmp = lst;
-	i = 0;
-	while (tmp)
-	{
-		if (is_empty((char *) tmp->content))
-		{
-			free(tmp->content);
-			ft_chain_pop(&lst, i);
-		}
-		tmp = tmp->next;
-		i++;
-	}
-	game->map_buffer = ft_strjoin("\n", lst);
+	game->map_buffer = game->file_buffer + offset;
 	ft_chain_clear(&lst);
-	ft_chain_clear(&tmp);
 }
