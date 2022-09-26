@@ -52,6 +52,7 @@ for i, map in enumerate(maps):
 	else:
 		memory_error = False
 	if expected == got and not leaks and not memory_error and not KEEP_SUCCESSES:
+		success += 1
 		continue
 	if i > 0:
 		print("\n" + Style.BRIGHT + Fore.LIGHTYELLOW_EX + "-"*80 + Style.RESET_ALL + "\n")
@@ -80,6 +81,5 @@ print(Fore.LIGHTGREEN_EX + "✅ Success : {}".format(success) + Style.RESET_ALL)
 print(Fore.LIGHTRED_EX + "❌ Fails : {}".format(fails))
 print("🚰 Leaks : {}".format(total_leaks))
 print("🐛 Memory errors : {}".format(total_memory_error) + Style.RESET_ALL)
-print(Fore.LIGHTMAGENTA_EX + "📊 Total : {}".format(success + fails + leaks + memory_error) + Style.RESET_ALL)
 
 print(Fore.LIGHTBLUE_EX + "🕒 Average time : {:.2f}ms".format(sum(times) / len(times) / 1000000) + Style.RESET_ALL)
