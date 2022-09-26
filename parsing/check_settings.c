@@ -6,7 +6,7 @@
 /*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 22:50:59 by jallerha          #+#    #+#             */
-/*   Updated: 2022/09/26 22:52:43 by jallerha         ###   ########.fr       */
+/*   Updated: 2022/09/26 23:38:07 by jallerha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ void	ft_check_textures(t_game *game)
 	if (!game->ea_path || !ft_check_texture(game->ea_path))
 		game->errors |= ERR_INV_EA;
 }
-
 
 void	ft_check_colors(t_game *game)
 {

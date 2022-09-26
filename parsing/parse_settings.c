@@ -6,11 +6,9 @@
 /*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 22:29:38 by jallerha          #+#    #+#             */
-/*   Updated: 2022/09/26 23:03:14 by jallerha         ###   ########.fr       */
+/*   Updated: 2022/09/26 23:38:18 by jallerha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-// Settings can be in any order as long as they're before the map (6 first lines)
 
 #include "parsing.h"
 #include "lists.h"
