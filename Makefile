@@ -11,6 +11,7 @@ SRCS =  main.c \
 		parsing/buffer_file.c \
 		parsing/parse_textures.c \
 		parsing/parse_rgb.c \
+		parsing/check_textures.c \
 		debug/print_game_struct.c \
 		debug/print_color_struct.c \
 		memory/destroy_game.c \

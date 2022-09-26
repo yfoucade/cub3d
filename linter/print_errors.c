@@ -6,7 +6,7 @@
 /*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 22:29:46 by jallerha          #+#    #+#             */
-/*   Updated: 2022/09/26 00:10:58 by jallerha         ###   ########.fr       */
+/*   Updated: 2022/09/26 12:27:33 by jallerha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,36 @@ void	ft_missing_attributes_error(t_game *game)
 			RESET, game->filename, RESET);
 }
 
+void	ft_invalid_colors(t_game *game)
+{
+	if (game->errors & ERR_INV_C)
+		ft_fprintf(STDERR, RED3"fatal: %s'%s' Invalid C color%s\n",
+			RESET, game->filename, RESET);
+	if (game->errors & ERR_INV_F)
+		ft_fprintf(STDERR, RED3"fatal: %s'%s' Invalid F color%s\n",
+			RESET, game->filename, RESET);
+}
+
+void	ft_invalid_textures(t_game *game)
+{
+	if (game->errors & ERR_INV_NO)
+		ft_fprintf(STDERR, RED3"fatal: %s'%s' Invalid NO texture%s\n",
+			RESET, game->filename, RESET);
+	if (game->errors & ERR_INV_SO)
+		ft_fprintf(STDERR, RED3"fatal: %s'%s' Invalid SO texture%s\n",
+			RESET, game->filename, RESET);
+	if (game->errors & ERR_INV_WE)
+		ft_fprintf(STDERR, RED3"fatal: %s'%s' Invalid WE texture%s\n",
+			RESET, game->filename, RESET);
+	if (game->errors & ERR_INV_EA)
+		ft_fprintf(STDERR, RED3"fatal: %s'%s' Invalid EA texture%s\n",
+			RESET, game->filename, RESET);
+}
+
 void	ft_print_errors(t_game *game)
 {
 	ft_io_errors(game->filename, game->errors);
 	ft_missing_attributes_error(game);
+	ft_invalid_colors(game);
+	ft_invalid_textures(game);
 }

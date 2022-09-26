@@ -6,7 +6,7 @@
 /*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 15:05:17 by jallerha          #+#    #+#             */
-/*   Updated: 2022/09/25 01:20:52 by jallerha         ###   ########.fr       */
+/*   Updated: 2022/09/26 12:27:48 by jallerha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,6 @@ t_game	ft_run_parser(char *path)
 	ft_name_sanity(path, &game);
 	ft_parse_textures(&game);
 	ft_check_colors(&game);
+	ft_check_textures(&game);
 	return (game);
 }
