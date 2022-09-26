@@ -91,6 +91,10 @@ SRCS =  ft_printf/ft_printf.c \
 		math/ft_sqrt.c \
 		math/ft_pow.c \
 		math/ft_isprime.c \
+		matrix/get.c \
+		matrix/set.c \
+		matrix/init.c \
+		matrix/destroy.c \
 
 OBJS := ${SRCS:.c=.o}
 
