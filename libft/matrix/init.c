@@ -6,7 +6,7 @@
 /*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 23:29:26 by jallerha          #+#    #+#             */
-/*   Updated: 2022/09/28 12:04:45 by jallerha         ###   ########.fr       */
+/*   Updated: 2022/09/28 12:16:06 by jallerha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ t_matrix	ft_init_matrix(int rows, int cols)
 	return (matrix);
 }
 
-t_matrix	ft_arbitrary_init_matrix(int rows, int cols, int n)
+t_matrix	ft_arbitrary_init_matrix(int rows, int cols, char n)
 {
 	t_matrix	matrix;
 	int			i;
