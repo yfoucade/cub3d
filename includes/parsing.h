@@ -6,7 +6,7 @@
 /*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 13:57:37 by jallerha          #+#    #+#             */
-/*   Updated: 2022/09/28 14:34:22 by jallerha         ###   ########.fr       */
+/*   Updated: 2022/09/28 15:16:51 by jallerha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@
 // -- Map sanity error bitmask --
 # define ERR_MUL_SPW 0b00000000000010000000000000000000
 # define ERR_NO_SPW  0b00000000000100000000000000000000
+# define ERR_MAP_HOL 0b00000000001000000000000000000000
 // -- Map sanity error bitmask --
 
 int		ft_data_sanity(char *path, t_game *game);
