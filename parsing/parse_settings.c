@@ -6,7 +6,7 @@
 /*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 22:29:38 by jallerha          #+#    #+#             */
-/*   Updated: 2022/09/26 23:38:18 by jallerha         ###   ########.fr       */
+/*   Updated: 2022/09/28 13:05:44 by jallerha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	ft_set_texture(t_game *game, char *s, char **target)
 	{
 		ft_strip(s);
 		*target = ft_strdup(s);
+		game->parsed_settings++;
 	}
 }
 
@@ -29,7 +30,10 @@ void	ft_set_color(t_game *game, char *s, t_color *target)
 	if (target->valid == 1)
 		game->errors |= ERR_DUP_SET;
 	else
+	{
 		*(target) = ft_parse_rgb(s);
+		game->parsed_settings++;
+	}
 }
 
 void	ft_parse_line(t_game *game, char *s)
@@ -48,6 +52,8 @@ void	ft_parse_line(t_game *game, char *s)
 		ft_set_texture(game, s + 3, &game->no_path);
 	else if (ft_strncmp(s, "SO", 2) == 0)
 		ft_set_texture(game, s + 3, &game->so_path);
+	else if (game->parsed_settings < 6)
+		game->errors |= ERR_INV_ODR;
 }
 
 void	ft_parse_settings(t_game *game)
