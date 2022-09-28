@@ -6,7 +6,7 @@
 /*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 13:34:07 by jallerha          #+#    #+#             */
-/*   Updated: 2022/09/28 15:59:24 by jallerha         ###   ########.fr       */
+/*   Updated: 2022/09/28 16:12:44 by jallerha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -255,7 +255,6 @@ int			ft_strlen(char *str);
  * @return int The number of chars in str (up to n)
  */
 int			ft_strnlen(char *str, int n);
-
 
 /**
  * @brief The difference in n first bytes between s1 and s2 (case-sensitive)
