@@ -6,7 +6,7 @@
 /*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 23:22:14 by jallerha          #+#    #+#             */
-/*   Updated: 2022/09/28 12:04:39 by jallerha         ###   ########.fr       */
+/*   Updated: 2022/09/28 12:07:25 by jallerha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 
 typedef struct s_matrix
 {
-	int	*matrix;
-	int	rows;
-	int	cols;
+	char	*matrix;
+	int		rows;
+	int		cols;
 }	t_matrix;
 
 /**
@@ -29,9 +29,9 @@ typedef struct s_matrix
  * @param y The y coordinate.
  * @param val The value to set at the given coordinates.
  * @return int The new value at the given coordinates.
- * (-2147483648 if the coordinates are out of bounds)
+ * (-128 if the coordinates are out of bounds)
 */
-int			ft_set_matrix(t_matrix *matrix, int x, int y, int val);
+int			ft_set_matrix(t_matrix *matrix, int x, int y, char val);
 
 /**
  * @brief Returns a value from a matrix using the given coordinates.
@@ -40,9 +40,9 @@ int			ft_set_matrix(t_matrix *matrix, int x, int y, int val);
  * @param x The x coordinate.
  * @param y The y coordinate.
  * @return int The value at the given coordinates.
- * (-2147483648 if the coordinates are out of bounds)
+ * (-128 if the coordinates are out of bounds)
 */
-int			ft_get_matrix(t_matrix *matrix, int x, int y);
+char		ft_get_matrix(t_matrix *matrix, int x, int y);
 
 /**
  * @brief Initializes a matrix with the given dimensions. Sets all values to 0.
@@ -62,7 +62,7 @@ t_matrix	ft_init_matrix(int rows, int cols);
  * @param n The value to set all values to.
  * @return t_matrix The initialized matrix.
  */
-t_matrix	ft_arbitrary_init_matrix(int rows, int cols, int n);
+t_matrix	ft_arbitrary_init_matrix(int rows, int cols, char n);
 
 /**
  * @brief Frees the memory allocated for a matrix.
