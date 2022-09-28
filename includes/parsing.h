@@ -6,7 +6,7 @@
 /*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 13:57:37 by jallerha          #+#    #+#             */
-/*   Updated: 2022/09/26 22:52:19 by jallerha         ###   ########.fr       */
+/*   Updated: 2022/09/28 14:34:22 by jallerha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,11 @@
 # define ERR_DUP_SET 0b00000000000001000000000000000000
 // -- Parsing error bitmask --
 
+// -- Map sanity error bitmask --
+# define ERR_MUL_SPW 0b00000000000010000000000000000000
+# define ERR_NO_SPW  0b00000000000100000000000000000000
+// -- Map sanity error bitmask --
+
 int		ft_data_sanity(char *path, t_game *game);
 int		ft_name_sanity(char *filename, t_game *game);
 t_game	ft_run_parser(char *path);
@@ -54,4 +59,6 @@ void	ft_check_textures(t_game *game);
 int		is_empty(char *s);
 void	ft_buffer_map(t_game *game);
 void	ft_check_colors(t_game *game);
+void	ft_map_sanity(t_game *game);
+
 #endif
