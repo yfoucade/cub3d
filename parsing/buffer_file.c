@@ -6,11 +6,12 @@
 /*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 22:38:59 by jallerha          #+#    #+#             */
-/*   Updated: 2022/09/25 23:19:49 by jallerha         ###   ########.fr       */
+/*   Updated: 2022/09/28 14:10:46 by jallerha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
+#include "file.h"
 
 // TODO: This file is dirty, refactor it
 
@@ -39,29 +40,5 @@ char	*ft_free_locals(char *line, char *tmp, char *output)
 */
 char	*ft_buffer_file(char *path)
 {
-	char	*output;
-	char	*tmp;
-	char	*line;
-	int		fd;
-	int		map_size;
-
-	ft_init(&output, &tmp, &map_size);
-	if (!output)
-		return (NULL);
-	fd = open(path, O_RDONLY);
-	if (fd == -1)
-		return (NULL);
-	line = get_next_line(fd);
-	while (line)
-	{
-		map_size += ft_strlen(line);
-		tmp = ft_strsjoin(output, line);
-		if (!tmp)
-			return (ft_free_locals(line, tmp, output));
-		ft_free_locals(line, NULL, output);
-		output = tmp;
-		line = get_next_line(fd);
-	}
-	close(fd);
-	return (output);
+	return (ft_read_file(path));
 }
