@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   linter.h                                           :+:      :+:    :+:   */
+/*   map_errors.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/25 22:29:26 by jallerha          #+#    #+#             */
-/*   Updated: 2022/09/28 14:33:41 by jallerha         ###   ########.fr       */
+/*   Created: 2022/09/28 14:32:20 by jallerha          #+#    #+#             */
+/*   Updated: 2022/09/28 14:33:21 by jallerha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LINTER_H
-# define LINTER_H
+#include "linter.h"
 
-# include "parsing.h"
-# include "colors.h"
-# include "printf.h"
-
-void	ft_io_errors(char *filename, unsigned long error_mask);
-void	ft_print_errors(t_game *game);
-void    ft_invalid_colors(t_game *game);
-void    ft_invalid_settings_error(t_game *game);
-void    ft_invalid_textures(t_game *game);
-void	ft_map_errors(t_game *game);
-
-#endif
+void	ft_map_errors(t_game *game)
+{
+	if (game->errors & ERR_MUL_SPW)
+		ft_fprintf(STDERR, RED3"fatal: %s'%s' Multiple spawn points%s\n",
+			RESET, game->filename, RESET);
+	if (game->errors & ERR_NO_SPW)
+		ft_fprintf(STDERR, RED3"fatal: %s'%s' No spawn point%s\n",
+			RESET, game->filename, RESET);
+}

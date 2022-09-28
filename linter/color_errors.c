@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   linter.h                                           :+:      :+:    :+:   */
+/*   color_errors.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/25 22:29:26 by jallerha          #+#    #+#             */
-/*   Updated: 2022/09/28 14:33:41 by jallerha         ###   ########.fr       */
+/*   Created: 2022/09/28 14:29:26 by jallerha          #+#    #+#             */
+/*   Updated: 2022/09/28 14:29:33 by jallerha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LINTER_H
-# define LINTER_H
+#include "linter.h"
 
-# include "parsing.h"
-# include "colors.h"
-# include "printf.h"
-
-void	ft_io_errors(char *filename, unsigned long error_mask);
-void	ft_print_errors(t_game *game);
-void    ft_invalid_colors(t_game *game);
-void    ft_invalid_settings_error(t_game *game);
-void    ft_invalid_textures(t_game *game);
-void	ft_map_errors(t_game *game);
-
-#endif
+void	ft_invalid_colors(t_game *game)
+{
+	if (game->errors & ERR_INV_C)
+		ft_fprintf(STDERR, RED3"fatal: %s'%s' Invalid C color%s\n",
+			RESET, game->filename, RESET);
+	if (game->errors & ERR_INV_F)
+		ft_fprintf(STDERR, RED3"fatal: %s'%s' Invalid F color%s\n",
+			RESET, game->filename, RESET);
+}

@@ -13,10 +13,16 @@ SRCS =  main.c \
 		parsing/sanity/check_settings.c \
 		parsing/sanity/data_sanity.c \
 		parsing/sanity/name_sanity.c \
+		parsing/sanity/map_sanity.c \
 		debug/print_game_struct.c \
 		debug/print_color_struct.c \
 		memory/destroy_game.c \
+		linter/color_errors.c \
+		linter/io_errors.c \
 		linter/print_errors.c \
+		linter/settings_errors.c \
+		linter/textures_errors.c \
+		linter/map_errors.c \
 
 OBJS := ${SRCS:.c=.o}
 
