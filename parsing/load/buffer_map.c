@@ -6,7 +6,7 @@
 /*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 15:08:36 by jallerha          #+#    #+#             */
-/*   Updated: 2022/09/28 16:10:05 by jallerha         ###   ########.fr       */
+/*   Updated: 2022/09/28 16:15:08 by jallerha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	ft_process_lines(t_game *game, int offset, t_chain_lst *old_list)
 	t_chain_lst	*tmp;
 
 	ft_destroy_old_list(old_list);
-	if ((game->map_size + offset >= game->map_size)
+	if ((game->map_size - offset < 0)
 		|| ft_strnlen(game->file_buffer + offset, 3) < 3)
 	{
 		game->map_buffer = ft_strdup("");
