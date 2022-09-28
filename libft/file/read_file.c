@@ -6,7 +6,7 @@
 /*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 16:08:58 by jallerha          #+#    #+#             */
-/*   Updated: 2022/03/21 11:34:59 by jallerha         ###   ########.fr       */
+/*   Updated: 2022/09/28 14:13:25 by jallerha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,10 @@ char	*ft_read_file(char *path)
 		return (NULL);
 	size = ft_file_size(fd);
 	if (size == 0)
-		return (ft_strdup(""));
+		return (NULL);
 	fd = open(path, O_RDONLY);
-	if (!ft_malloc(&buffer, sizeof(char), size + 1))
+	buffer = (char *) malloc(sizeof(char) * (size + 1));
+	if (!buffer)
 		return (NULL);
 	read(fd, buffer, size);
 	buffer[size] = '\0';
