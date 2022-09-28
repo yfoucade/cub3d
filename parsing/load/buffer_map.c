@@ -6,7 +6,7 @@
 /*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 15:08:36 by jallerha          #+#    #+#             */
-/*   Updated: 2022/09/28 13:59:57 by jallerha         ###   ########.fr       */
+/*   Updated: 2022/09/28 14:51:02 by jallerha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	ft_buffer_map(t_game *game)
 		tmp = tmp->next;
 	}
 	offset--;
-	game->map_buffer = game->file_buffer + offset;
+	game->map_buffer = ft_strdup(game->file_buffer + offset);
 	ft_chain_clear(&lst);
+	game->map_lines = ft_split(game->map_buffer, "\n");
 }

@@ -6,12 +6,14 @@
 /*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 23:42:54 by jallerha          #+#    #+#             */
-/*   Updated: 2022/09/28 12:15:45 by jallerha         ###   ########.fr       */
+/*   Updated: 2022/09/28 14:39:55 by jallerha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GAME_H
 # define GAME_H
+
+#include "lists.h"
 
 typedef struct s_color
 {
@@ -34,6 +36,7 @@ typedef struct s_game
 	unsigned long	errors;
 	t_color			floor_color;
 	t_color			ceiling_color;
+	t_chain_lst		*map_lines;
 }	t_game;
 
 void	ft_destroy_game(t_game *game);
