@@ -5,14 +5,14 @@ NORMINETTE_BIN = norminette
 NM_BIN = nm
 
 SRCS =  main.c \
-		parsing/data_sanity.c \
-		parsing/name_sanity.c \
-		parsing/run_parser.c \
-		parsing/buffer_file.c \
-		parsing/buffer_map.c \
-		parsing/parse_settings.c \
+		parsing/load/buffer_file.c \
+		parsing/load/buffer_map.c \
 		parsing/parse_rgb.c \
-		parsing/check_settings.c \
+		parsing/parse_settings.c \
+		parsing/run_parser.c \
+		parsing/sanity/check_settings.c \
+		parsing/sanity/data_sanity.c \
+		parsing/sanity/name_sanity.c \
 		debug/print_game_struct.c \
 		debug/print_color_struct.c \
 		memory/destroy_game.c \
