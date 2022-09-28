@@ -6,7 +6,7 @@
 /*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 23:42:54 by jallerha          #+#    #+#             */
-/*   Updated: 2022/09/28 16:08:11 by jallerha         ###   ########.fr       */
+/*   Updated: 2022/09/28 16:26:13 by jallerha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,13 @@
 # define GAME_H
 
 # include "lists.h"
+
+# define WALL 1
+# define VOID 0
+# define PLAYER_NORTH 2
+# define PLAYER_SOUTH 3
+# define PLAYER_EAST 4
+# define PLAYER_WEST 5
 
 typedef struct s_color
 {
@@ -38,6 +45,7 @@ typedef struct s_game
 	t_color			floor_color;
 	t_color			ceiling_color;
 	t_chain_lst		*map_lines;
+	t_matrix		matrix;
 }	t_game;
 
 void	ft_destroy_game(t_game *game);
