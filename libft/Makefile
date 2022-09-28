@@ -26,6 +26,7 @@ SRCS =  ft_printf/ft_printf.c \
 		strings/ft_memset.c \
 		strings/ft_count_words.c \
 		strings/ft_strlen.c \
+		strings/ft_strnlen.c \
 		strings/ft_memcmp.c \
 		strings/ft_split.c \
 		strings/ft_bzero.c \

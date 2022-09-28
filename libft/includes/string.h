@@ -6,7 +6,7 @@
 /*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 13:34:07 by jallerha          #+#    #+#             */
-/*   Updated: 2022/03/21 11:36:33 by jallerha         ###   ########.fr       */
+/*   Updated: 2022/09/28 15:59:24 by jallerha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -246,6 +246,16 @@ int			ft_strcspn(char *str, char *charset);
  * @return int The number of chars in str
  */
 int			ft_strlen(char *str);
+
+/**
+ * @brief Count how many chars are in str (excluding '\0') up to n
+ * 
+ * @param str The string to count
+ * @param n The maximum number of chars to count
+ * @return int The number of chars in str (up to n)
+ */
+int			ft_strnlen(char *str, int n);
+
 
 /**
  * @brief The difference in n first bytes between s1 and s2 (case-sensitive)
