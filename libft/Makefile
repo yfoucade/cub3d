@@ -95,6 +95,7 @@ SRCS =  ft_printf/ft_printf.c \
 		matrix/set.c \
 		matrix/init.c \
 		matrix/destroy.c \
+		matrix/create.c \
 
 OBJS := ${SRCS:.c=.o}
 
