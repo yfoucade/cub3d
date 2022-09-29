@@ -6,7 +6,7 @@
 /*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 15:05:17 by jallerha          #+#    #+#             */
-/*   Updated: 2022/09/29 15:00:35 by jallerha         ###   ########.fr       */
+/*   Updated: 2022/09/29 16:06:38 by jallerha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,11 @@ t_game	ft_run_parser(char *path)
 	if (ft_data_sanity(path, &game) != 1)
 		return (game);
 	game.file_buffer = ft_buffer_file(path);
+	if (game.file_buffer == NULL)
+	{
+		game.errors |= ERR_READ | ERR_BUFF;
+		return (game);
+	}
 	game.map_size = ft_strlen(game.file_buffer);
 	if (!game.file_buffer)
 	{

@@ -6,7 +6,7 @@
 /*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 16:22:22 by jallerha          #+#    #+#             */
-/*   Updated: 2022/09/29 14:59:50 by jallerha         ###   ########.fr       */
+/*   Updated: 2022/09/29 16:08:59 by jallerha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	ft_fill_matrix(t_game *game)
 {
 	int			x;
 	int			y;
-	t_chain_lst *lst;
+	t_chain_lst	*lst;
 
 	x = 0;
 	y = 0;
@@ -44,7 +44,8 @@ void	ft_fill_matrix(t_game *game)
 	{
 		while (x < ft_strlen((char *) lst->content))
 		{
-			ft_set_matrix(&game->matrix, x, y, ft_get_mapped_char(((char *) lst->content)[x]));
+			ft_set_matrix(&game->matrix, x, y,
+				ft_get_mapped_char(((char *) lst->content)[x]));
 			x++;
 		}
 		x = 0;
