@@ -6,7 +6,7 @@
 /*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 13:57:37 by jallerha          #+#    #+#             */
-/*   Updated: 2022/09/28 16:04:00 by jallerha         ###   ########.fr       */
+/*   Updated: 2022/09/29 13:59:33 by jallerha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,15 +53,15 @@
 # define ERR_MAP_MIS 0b00000000100000000000000000000000
 // -- Map sanity error bitmask --
 
-int		ft_data_sanity(char *path, t_game *game);
-int		ft_name_sanity(char *filename, t_game *game);
-t_game	ft_run_parser(char *path);
-char	*ft_buffer_file(char *path);
-void	ft_parse_settings(t_game *game);
-void	ft_check_textures(t_game *game);
-int		is_empty(char *s);
-void	ft_buffer_map(t_game *game);
-void	ft_check_colors(t_game *game);
-void	ft_map_sanity(t_game *game);
-
+int			ft_data_sanity(char *path, t_game *game);
+int			ft_name_sanity(char *filename, t_game *game);
+t_game		ft_run_parser(char *path);
+char		*ft_buffer_file(char *path);
+void		ft_parse_settings(t_game *game);
+void		ft_check_textures(t_game *game);
+int			is_empty(char *s);
+void		ft_buffer_map(t_game *game);
+void		ft_check_colors(t_game *game);
+void		ft_map_sanity(t_game *game);
+void		ft_map_to_matrix(t_game *game);
 #endif

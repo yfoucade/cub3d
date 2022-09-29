@@ -14,8 +14,10 @@ SRCS =  main.c \
 		parsing/sanity/data_sanity.c \
 		parsing/sanity/name_sanity.c \
 		parsing/sanity/map_sanity.c \
+		parsing/map_to_matrix.c \
 		debug/print_game_struct.c \
 		debug/print_color_struct.c \
+		debug/print_matrix.c \
 		memory/destroy_game.c \
 		linter/color_errors.c \
 		linter/io_errors.c \

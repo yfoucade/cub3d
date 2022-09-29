@@ -1,26 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   debug.h                                            :+:      :+:    :+:   */
+/*   print_matrix.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/25 00:03:16 by jallerha          #+#    #+#             */
-/*   Updated: 2022/09/29 13:59:55 by jallerha         ###   ########.fr       */
+/*   Created: 2022/09/29 13:55:42 by jallerha          #+#    #+#             */
+/*   Updated: 2022/09/29 14:10:36 by jallerha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DEBUG_H
-# define DEBUG_H
+#include "game.h"
+#include <stdio.h>
 
-# include "neo_libft.h"
-# include "game.h"
+void	ft_print_matrix(t_matrix *matrix)
+{
+	int	rows;
+	int	cols;
+	int	x;
+	int	y;
 
-# ifndef DEBUG
-#  define DEBUG 1
-# endif
-
-void	ft_print_game_struct(t_game *game);
-void	ft_print_color_struct(t_color *game);
-void	ft_print_matrix(t_matrix *matrix);
-#endif
+	rows = matrix->rows;
+	cols = matrix->cols;
+	x = 0;
+	y = 0;
+	while (x < cols)
+	{
+		while (y < rows)
+		{
+			printf("%d ", ft_get_matrix(matrix, y, x));
+			y++;
+		}
+		printf("\n");
+		y = 0;
+		x++;
+	}
+}

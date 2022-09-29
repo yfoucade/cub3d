@@ -6,7 +6,7 @@
 /*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 00:09:48 by jallerha          #+#    #+#             */
-/*   Updated: 2022/09/28 14:51:50 by jallerha         ###   ########.fr       */
+/*   Updated: 2022/09/29 14:11:52 by jallerha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,6 @@ void	ft_destroy_game(t_game *game)
 	free(game->map_buffer);
 	if (game->map_lines)
 		ft_destroy_lines(game->map_lines);
+	if (game->matrix.matrix)
+		ft_destroy_matrix(game->matrix);
 }
