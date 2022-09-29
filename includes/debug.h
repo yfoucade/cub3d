@@ -6,7 +6,7 @@
 /*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 00:03:16 by jallerha          #+#    #+#             */
-/*   Updated: 2022/09/29 14:44:12 by jallerha         ###   ########.fr       */
+/*   Updated: 2022/09/29 16:14:32 by jallerha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "neo_libft.h"
 # include "game.h"
+# include <stdio.h>
 
 # ifndef DEBUG
 #  define DEBUG 1
