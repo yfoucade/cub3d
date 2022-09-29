@@ -6,7 +6,7 @@
 /*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 12:18:41 by jallerha          #+#    #+#             */
-/*   Updated: 2022/09/29 16:45:29 by jallerha         ###   ########.fr       */
+/*   Updated: 2022/09/29 17:41:45 by jallerha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	main(int argc, char **argv)
 	ft_print_matrix(&game.matrix);
 	if (game.errors != 0)
 	{
-		DEBUG_PRINT("non-zero error mask : %lu\n", game.errors);
+		DEBUG_PRINT("non-zero error mask : %llu\n", game.errors);
 		ret = 1;
 	}
 	else
