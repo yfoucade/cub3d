@@ -6,7 +6,7 @@
 /*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 15:05:17 by jallerha          #+#    #+#             */
-/*   Updated: 2022/09/29 14:12:50 by jallerha         ###   ########.fr       */
+/*   Updated: 2022/09/29 15:00:35 by jallerha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,7 @@ t_game	ft_run_parser(char *path)
 	ft_buffer_map(&game);
 	ft_map_sanity(&game);
 	ft_map_to_matrix(&game);
+	if (game.matrix.rows > 0)
+		ft_matrix_sanity(&game);
 	return (game);
 }

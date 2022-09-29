@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   linter.h                                           :+:      :+:    :+:   */
+/*   matrix_errors.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/25 22:29:26 by jallerha          #+#    #+#             */
-/*   Updated: 2022/09/29 15:07:29 by jallerha         ###   ########.fr       */
+/*   Created: 2022/09/29 15:05:37 by jallerha          #+#    #+#             */
+/*   Updated: 2022/09/29 15:08:42 by jallerha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LINTER_H
-# define LINTER_H
+#include "linter.h"
 
-# include "parsing.h"
-# include "colors.h"
-# include "printf.h"
-
-void	ft_io_errors(char *filename, unsigned long error_mask);
-void	ft_print_errors(t_game *game);
-void	ft_invalid_colors(t_game *game);
-void	ft_invalid_settings_error(t_game *game);
-void	ft_invalid_textures(t_game *game);
-void	ft_map_errors(t_game *game);
-void	ft_matrix_errors(t_game *game);
-
-#endif
+void	ft_matrix_errors(t_game *game)
+{
+	if (game->errors & ERR_ILL_CHR)
+		ft_fprintf(STDERR, RED3"fatal: %s'%s' Illegal character in map%s\n",
+			RESET, game->filename, RESET);
+	if (game->errors & ERR_MTX_INI)
+		ft_fprintf(STDERR, RED3"fatal: %s'%s' Failed to initialize matrix%s\n",
+			RESET, game->filename, RESET);
+}

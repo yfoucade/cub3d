@@ -6,7 +6,7 @@
 /*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 13:57:37 by jallerha          #+#    #+#             */
-/*   Updated: 2022/09/29 13:59:33 by jallerha         ###   ########.fr       */
+/*   Updated: 2022/09/29 15:08:40 by jallerha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@
 # define ERR_MAP_HOL 0b00000000001000000000000000000000
 # define ERR_MAP_BUF 0b00000000010000000000000000000000
 # define ERR_MAP_MIS 0b00000000100000000000000000000000
+# define ERR_ILL_CHR 0b00000001000000000000000000000000
+# define ERR_MTX_INI 0b00000010000000000000000000000000
 // -- Map sanity error bitmask --
 
 int			ft_data_sanity(char *path, t_game *game);
@@ -64,4 +66,6 @@ void		ft_buffer_map(t_game *game);
 void		ft_check_colors(t_game *game);
 void		ft_map_sanity(t_game *game);
 void		ft_map_to_matrix(t_game *game);
+void		ft_matrix_sanity(t_game *game);
+
 #endif
