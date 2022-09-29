@@ -56,7 +56,7 @@ for i, map in enumerate(maps):
 		continue
 	if i > 0:
 		print("\n" + Style.BRIGHT + Fore.LIGHTYELLOW_EX + "-"*80 + Style.RESET_ALL + "\n")
-	print(Fore.LIGHTMAGENTA_EX + "Map : {}".format(map) + Style.RESET_ALL, end=" ")
+	print(Fore.LIGHTMAGENTA_EX + "Map : {}".format(map) + Style.RESET_ALL, end=" ", flush=True)
 	if memory_error:
 		print("🐛", end=" ")
 		total_memory_error += 1
