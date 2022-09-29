@@ -6,7 +6,7 @@
 /*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 23:42:54 by jallerha          #+#    #+#             */
-/*   Updated: 2022/09/29 14:39:43 by jallerha         ###   ########.fr       */
+/*   Updated: 2022/09/29 16:59:44 by jallerha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "lists.h"
 # include "matrix.h"
+# include "mlx.h"
 
 # define WALL 1
 # define EMPTY 0
@@ -32,25 +33,35 @@ typedef struct s_color
 	int	valid;
 }	t_color;
 
+typedef struct	s_mlx
+{
+	void	*mlx_ptr;
+	void	*win_ptr;
+	void	**textures;
+}	t_mlx;
+
 typedef struct s_game
 {
-	char			*file_buffer;
-	char			*map_buffer;
-	char			*no_path;
-	char			*so_path;
-	char			*we_path;
-	char			*ea_path;
-	char			*filename;
-	short			parsed_settings;
-	int				map_size;
-	unsigned long	errors;
-	t_color			floor_color;
-	t_color			ceiling_color;
-	t_chain_lst		*map_lines;
-	t_matrix		matrix;
+	char				*file_buffer;
+	char				*map_buffer;
+	char				*no_path;
+	char				*so_path;
+	char				*we_path;
+	char				*ea_path;
+	char				*filename;
+	short				parsed_settings;
+	int					map_size;
+	float				player_x;
+	float				player_y;
+	unsigned long long	errors;
+	t_color				floor_color;
+	t_color				ceiling_color;
+	t_chain_lst			*map_lines;
+	t_matrix			matrix;
+	t_mlx				mlx;
 }	t_game;
 
 void	ft_destroy_game(t_game *game);
-t_color	ft_parse_rgb(char *s);
+void	ft_start_game(t_game *game);
 
 #endif
