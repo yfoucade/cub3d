@@ -37,7 +37,10 @@ def dump_texture(sq_size: int, text: str, output_path: str) -> None:
 	d.fontmode = "1"
 	d.text((sq_size/2, sq_size/2), text, fill=TXT_COLOR, anchor="mm", font=font)
 	with open(output_path, "wb+") as f:
-		f.write(pil_save(img, variable_name=text.lower().encode()))
+		xpm_data = pil_save(img, variable_name=text.lower().encode())
+		xpm_data = xpm_data.replace(b"'\"", b"\"")
+		xpm_data = xpm_data.replace(b"b'", b"")
+		f.write(xpm_data)
 
 print(f"Creating {size}x{size} textures..", end=" ", flush=True)
 try:
@@ -45,6 +48,6 @@ try:
 		dump_texture(size, texture, texture.lower() + ".xpm")
 	print("✅")
 except:
-	# Uncomment L49 to debug in case of error
+	# Uncomment L52 to debug in case of error
 	# traceback.print_exc()
 	print("❌")
