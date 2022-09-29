@@ -6,7 +6,7 @@
 /*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 15:08:36 by jallerha          #+#    #+#             */
-/*   Updated: 2022/09/28 16:15:08 by jallerha         ###   ########.fr       */
+/*   Updated: 2022/09/29 14:54:21 by jallerha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,6 @@ void	ft_destroy_old_list(t_chain_lst *old_list)
 
 void	ft_process_lines(t_game *game, int offset, t_chain_lst *old_list)
 {
-	t_chain_lst	*tmp;
-
 	ft_destroy_old_list(old_list);
 	if ((game->map_size - offset < 0)
 		|| ft_strnlen(game->file_buffer + offset, 3) < 3)
@@ -42,12 +40,6 @@ void	ft_process_lines(t_game *game, int offset, t_chain_lst *old_list)
 	}
 	game->map_buffer = ft_strdup(game->file_buffer + offset);
 	game->map_lines = ft_split(game->map_buffer, "\n");
-	tmp = game->map_lines;
-	while (tmp)
-	{
-		ft_rstrip((char *) tmp->content);
-		tmp = tmp->next;
-	}
 }
 
 void	ft_buffer_map(t_game *game)
