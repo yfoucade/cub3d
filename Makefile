@@ -21,7 +21,6 @@ SRCS =  main.c \
 		debug/print_game_struct.c \
 		debug/print_color_struct.c \
 		debug/print_matrix.c \
-		memory/destroy_game.c \
 		linter/color_errors.c \
 		linter/io_errors.c \
 		linter/print_errors.c \
@@ -29,7 +28,12 @@ SRCS =  main.c \
 		linter/textures_errors.c \
 		linter/map_errors.c \
 		linter/matrix_errors.c \
-		game/start.c
+		game/start.c \
+		game/error.c \
+		game/init.c \
+		game/destroy.c \
+		game/hooks/redcross.c \
+		game/hooks/keys.c \
 
 OBJS := ${SRCS:.c=.o}
 

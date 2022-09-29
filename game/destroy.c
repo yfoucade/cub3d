@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   destroy_game.c                                     :+:      :+:    :+:   */
+/*   destroy.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 00:09:48 by jallerha          #+#    #+#             */
-/*   Updated: 2022/09/29 17:15:17 by jallerha         ###   ########.fr       */
+/*   Updated: 2022/09/29 18:02:12 by jallerha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,25 @@ void	ft_destroy_mlx(t_game *game)
 	DEBUG_PRINT("win_ptr : %p\n", game->mlx.win_ptr);
 	if (game->mlx.win_ptr)
 		mlx_destroy_window(game->mlx.mlx_ptr, game->mlx.win_ptr);
+	if (game->mlx.no_img)
+		mlx_destroy_image(game->mlx.mlx_ptr, game->mlx.no_img);
+	if (game->mlx.so_img)
+		mlx_destroy_image(game->mlx.mlx_ptr, game->mlx.so_img);
+	if (game->mlx.we_img)
+		mlx_destroy_image(game->mlx.mlx_ptr, game->mlx.we_img);
+	if (game->mlx.ea_img)
+		mlx_destroy_image(game->mlx.mlx_ptr, game->mlx.ea_img);
 	if (game->mlx.mlx_ptr)
+	{
 		mlx_destroy_display(game->mlx.mlx_ptr);
+		free(game->mlx.mlx_ptr);
+	}
 }
 
 void	ft_destroy_game(t_game *game)
 {
+	DEBUG_PRINT("game : %p\n", game);
+	ft_destroy_mlx(game);
 	free(game->ea_path);
 	free(game->so_path);
 	free(game->we_path);
@@ -51,5 +64,4 @@ void	ft_destroy_game(t_game *game)
 		ft_destroy_lines(game->map_lines);
 	if (game->matrix.matrix)
 		ft_destroy_matrix(game->matrix);
-	ft_destroy_mlx(game);
 }

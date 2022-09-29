@@ -6,7 +6,7 @@
 /*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 23:42:54 by jallerha          #+#    #+#             */
-/*   Updated: 2022/09/29 16:59:44 by jallerha         ###   ########.fr       */
+/*   Updated: 2022/09/29 18:00:14 by jallerha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,10 @@
 # define PLAYER_WEST 5
 # define VOID 9
 
+// Arbitrary values
+# define WINDOW_WIDTH 800
+# define WINDOW_HEIGHT 600
+
 typedef struct s_color
 {
 	int	r;
@@ -37,7 +41,10 @@ typedef struct	s_mlx
 {
 	void	*mlx_ptr;
 	void	*win_ptr;
-	void	**textures;
+	void	*no_img;
+	void	*so_img;
+	void	*we_img;
+	void	*ea_img;
 }	t_mlx;
 
 typedef struct s_game
@@ -61,7 +68,12 @@ typedef struct s_game
 	t_mlx				mlx;
 }	t_game;
 
-void	ft_destroy_game(t_game *game);
+void	ft_init_game(t_game *game);
 void	ft_start_game(t_game *game);
+void	ft_destroy_game(t_game *game);
+void	ft_print_error(t_game *game, char *message, int exit);
 
+// MLX hooked functions
+int		ft_redcross(t_game *game);
+int		ft_key_hook(int keycode, t_game *game);
 #endif
