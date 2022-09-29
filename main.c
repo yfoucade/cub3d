@@ -6,7 +6,7 @@
 /*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 12:18:41 by jallerha          #+#    #+#             */
-/*   Updated: 2022/09/26 15:15:59 by jallerha         ###   ########.fr       */
+/*   Updated: 2022/09/29 14:44:52 by jallerha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	main(int argc, char **argv)
 	t_game	game;
 	int		ret;
 
+	DEBUG_PRINT("To suppress debug output, compile with -DDEBUG=0\n")
 	ret = 0;
 	if (argc != 2)
 		return (1);
@@ -31,7 +32,7 @@ int	main(int argc, char **argv)
 		printf("non-zero error mask : %lu\n", game.errors);
 		ret = 1;
 	}
-	printf("\n\n%s\n\n", game.map_buffer);
+	ft_print_matrix(&game.matrix);
 	ft_destroy_game(&game);
 	return (ret);
 }
