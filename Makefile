@@ -1,6 +1,8 @@
 NAME = parsing_check
 NAME_LIBFT = libft.a
+NAME_MLX = libmlx.a
 
+MLX_DIR = minilibx-linux
 NORMINETTE_BIN = norminette
 NM_BIN = nm
 
@@ -39,25 +41,34 @@ INCLUDE_DIR = -I includes -I libft/includes
 
 CFLAGS = -Wall -Wextra -Werror -g3
 
+MLX_FLAGS = -lXext -lX11
+
 .c.o:
 	${CC} ${CFLAGS} -c ${INCLUDE_DIR} $< -o ${<:.c=.o}
 
-all: $(NAME_LIBFT) $(NAME)
+all: $(NAME_LIBFT) $(NAME_MLX) $(NAME)
 
 $(NAME): ${OBJS}
-	$(CC) $(CFLAGS) ${INCLUDE_DIR} -o $(NAME) ${OBJS} $(NAME_LIBFT)
+	$(CC) $(CFLAGS) $(MLX_FLAGS) ${INCLUDE_DIR} -o $(NAME) ${OBJS} $(NAME_LIBFT) $(NAME_MLX)
 
 $(NAME_LIBFT):
 	${RM} $(NAME_LIBFT)
 	make -C libft/
 	cp libft/libft.a $(NAME_LIBFT)
 
+$(NAME_MLX):
+	${RM} $(NAME_MLX)
+	make -C $(MLX_DIR)/
+	cp $(MLX_DIR)/libmlx_Linux.a $(NAME_MLX)
+
+
 clean:
 	make -C libft/ clean
+	make -C $(MLX_DIR)/ clean
 	${RM} ${OBJS}
 
 fclean: clean
-	${RM} $(NAME_LIBFT) $(NAME)
+	${RM} $(NAME_LIBFT) $(NAME_MLX) $(NAME)
 
 re: fclean all
 
