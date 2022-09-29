@@ -14,6 +14,7 @@ SRCS =  main.c \
 		parsing/sanity/data_sanity.c \
 		parsing/sanity/name_sanity.c \
 		parsing/sanity/map_sanity.c \
+		parsing/sanity/matrix_sanity.c \
 		parsing/map_to_matrix.c \
 		debug/print_game_struct.c \
 		debug/print_color_struct.c \
@@ -25,6 +26,8 @@ SRCS =  main.c \
 		linter/settings_errors.c \
 		linter/textures_errors.c \
 		linter/map_errors.c \
+		linter/matrix_errors.c \
+		game/start.c
 
 OBJS := ${SRCS:.c=.o}
 
