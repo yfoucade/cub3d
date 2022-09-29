@@ -6,11 +6,20 @@
 /*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 16:22:22 by jallerha          #+#    #+#             */
-/*   Updated: 2022/09/29 16:08:59 by jallerha         ###   ########.fr       */
+/*   Updated: 2022/09/29 16:41:13 by jallerha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
+
+void	ft_check_spawn(t_game *game, char c, int x, int y)
+{
+	if (ft_is_spawn_char(c))
+	{
+		game->player_x = x;
+		game->player_y = y;
+	}
+}
 
 char	ft_get_mapped_char(char c)
 {
@@ -35,6 +44,7 @@ void	ft_fill_matrix(t_game *game)
 {
 	int			x;
 	int			y;
+	char		c;
 	t_chain_lst	*lst;
 
 	x = 0;
@@ -44,8 +54,10 @@ void	ft_fill_matrix(t_game *game)
 	{
 		while (x < ft_strlen((char *) lst->content))
 		{
+			c = ((char *) lst->content)[x];
 			ft_set_matrix(&game->matrix, x, y,
-				ft_get_mapped_char(((char *) lst->content)[x]));
+				ft_get_mapped_char(c));
+			ft_check_spawn(game, c, x, y);
 			x++;
 		}
 		x = 0;
