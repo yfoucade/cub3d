@@ -6,7 +6,7 @@
 /*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 13:55:42 by jallerha          #+#    #+#             */
-/*   Updated: 2022/09/29 14:46:28 by jallerha         ###   ########.fr       */
+/*   Updated: 2022/09/29 14:53:34 by jallerha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	ft_print_colored(char c)
 	else if (c == PLAYER_WEST)
 		printf("%s%d%s", LIGHTGREEN1, c, RESET);
 	else if (c < 0)
-		printf("%s?%s\n", RED2, RESET);
+		printf("%s?%s", RED2, RESET);
 }
 
 void	ft_print_matrix(t_matrix *matrix)
