@@ -6,7 +6,7 @@
 /*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 16:22:22 by jallerha          #+#    #+#             */
-/*   Updated: 2022/09/29 14:35:50 by jallerha         ###   ########.fr       */
+/*   Updated: 2022/09/29 14:59:50 by jallerha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ char	ft_get_mapped_char(char c)
 	return (-128);
 }
 
-// TODO: Handle matrix init error
 void	ft_fill_matrix(t_game *game)
 {
 	int			x;
@@ -77,4 +76,6 @@ void	ft_map_to_matrix(t_game *game)
 	game->matrix = ft_create_matrix(rows, cols);
 	if (game->matrix.cols != -1)
 		ft_fill_matrix(game);
+	else
+		game->errors |= ERR_MTX_INI;
 }
