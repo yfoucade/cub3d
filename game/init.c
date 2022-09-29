@@ -6,13 +6,14 @@
 /*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 17:05:04 by jallerha          #+#    #+#             */
-/*   Updated: 2022/09/29 18:04:26 by jallerha         ###   ########.fr       */
+/*   Updated: 2022/09/29 18:27:21 by jallerha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game.h"
 #include "string.h"
 #include "debug.h"
+#include "colors.h"
 
 void	ft_init_hooks(t_game *game)
 {
@@ -55,9 +56,38 @@ void	ft_init_mlx(t_game *game)
 	ft_init_hooks(game);
 }
 
+// This function can be removed
+void	ft_demo_color(t_game *game)
+{
+	int width;
+	int height;
+	int	x;
+	int	y;
+
+	// set top half to ceiling color
+	// set bottom half to floor color
+	width = WINDOW_WIDTH;
+	height = WINDOW_HEIGHT;
+	y = 0;
+	while (y < height)
+	{
+		x = 0;
+		while (x < width)
+		{
+			if (y < height / 2)
+				mlx_pixel_put(game->mlx.mlx_ptr, game->mlx.win_ptr, x, y, game->ceiling_color.color_hex);
+			else
+				mlx_pixel_put(game->mlx.mlx_ptr, game->mlx.win_ptr, x, y, game->floor_color.color_hex);
+			x++;
+		}
+		y++;
+	}
+}
+
 void	ft_init_game(t_game *game)
 {
 	ft_init_mlx(game);
+	ft_demo_color(game);
 	mlx_put_image_to_window(game->mlx.mlx_ptr, game->mlx.win_ptr,
 		game->mlx.no_img, 0, 0);
 	mlx_put_image_to_window(game->mlx.mlx_ptr, game->mlx.win_ptr,
@@ -66,6 +96,5 @@ void	ft_init_game(t_game *game)
 		game->mlx.we_img, 128, 128);
 	mlx_put_image_to_window(game->mlx.mlx_ptr, game->mlx.win_ptr,
 		game->mlx.ea_img, 196, 196);
-	
 	mlx_loop(game->mlx.mlx_ptr);
 }

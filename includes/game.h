@@ -6,7 +6,7 @@
 /*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 23:42:54 by jallerha          #+#    #+#             */
-/*   Updated: 2022/09/29 18:00:14 by jallerha         ###   ########.fr       */
+/*   Updated: 2022/09/29 18:25:15 by jallerha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct s_color
 	int	g;
 	int	b;
 	int	valid;
+	int	color_hex;
 }	t_color;
 
 typedef struct	s_mlx

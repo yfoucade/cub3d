@@ -6,7 +6,7 @@
 /*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 00:57:10 by jallerha          #+#    #+#             */
-/*   Updated: 2022/09/28 16:11:28 by jallerha         ###   ########.fr       */
+/*   Updated: 2022/09/29 18:25:12 by jallerha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,5 +115,6 @@ t_color	ft_parse_rgb(char *s)
 	lst = ft_split(s, ",");
 	ft_parse(lst, &output);
 	ft_free_slices(lst);
+	output.color_hex = (output.r << 16) | (output.g << 8) | output.b;
 	return (output);
 }
