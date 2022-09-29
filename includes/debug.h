@@ -6,7 +6,7 @@
 /*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 00:03:16 by jallerha          #+#    #+#             */
-/*   Updated: 2022/09/29 13:59:55 by jallerha         ###   ########.fr       */
+/*   Updated: 2022/09/29 14:44:12 by jallerha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 # ifndef DEBUG
 #  define DEBUG 1
 # endif
+
+# define DEBUG_PRINT(...) if (DEBUG) { printf("[%s:%d] ", __FILE__, __LINE__); printf(__VA_ARGS__); }
 
 void	ft_print_game_struct(t_game *game);
 void	ft_print_color_struct(t_color *game);
