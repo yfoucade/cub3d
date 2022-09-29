@@ -6,13 +6,11 @@
 /*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 15:05:17 by jallerha          #+#    #+#             */
-/*   Updated: 2022/09/29 16:06:38 by jallerha         ###   ########.fr       */
+/*   Updated: 2022/09/29 18:04:46 by jallerha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
-
-// TODO : Check if path exists (by trying to opening them, use O_DIRECTORY)
 
 /**
  * @brief Runs the parser on the given file
