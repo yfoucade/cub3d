@@ -6,7 +6,7 @@
 /*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/24 23:42:54 by jallerha          #+#    #+#             */
-/*   Updated: 2022/09/29 13:57:25 by jallerha         ###   ########.fr       */
+/*   Updated: 2022/09/29 14:39:43 by jallerha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # define PLAYER_SOUTH 3
 # define PLAYER_EAST 4
 # define PLAYER_WEST 5
-# define VOID -1
+# define VOID 9
 
 typedef struct s_color
 {
