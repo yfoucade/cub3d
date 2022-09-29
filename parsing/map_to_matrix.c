@@ -6,7 +6,7 @@
 /*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 16:22:22 by jallerha          #+#    #+#             */
-/*   Updated: 2022/09/29 14:12:55 by jallerha         ###   ########.fr       */
+/*   Updated: 2022/09/29 14:35:50 by jallerha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	ft_get_mapped_char(char c)
 		return ((char) PLAYER_EAST);
 	else if (c == 'W')
 		return ((char) PLAYER_WEST);
-	return (-123);
+	return (-128);
 }
 
 // TODO: Handle matrix init error
