@@ -6,11 +6,11 @@
 /*   By: yfoucade <yfoucade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 15:23:09 by yfoucade          #+#    #+#             */
-/*   Updated: 2022/09/29 15:57:12 by yfoucade         ###   ########.fr       */
+/*   Updated: 2022/10/01 23:11:04 by yfoucade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "math_lib.h"
 
 double	norm(t_point *a, char free_byte)
 {

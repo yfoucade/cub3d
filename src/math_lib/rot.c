@@ -6,11 +6,11 @@
 /*   By: yfoucade <yfoucade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 15:48:49 by yfoucade          #+#    #+#             */
-/*   Updated: 2022/09/29 16:10:30 by yfoucade         ###   ########.fr       */
+/*   Updated: 2022/10/01 23:11:08 by yfoucade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "math_lib.h"
 
 t_point	*rot(t_point *a, double theta, char free_byte)
 {

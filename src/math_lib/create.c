@@ -6,11 +6,11 @@
 /*   By: yfoucade <yfoucade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 16:24:48 by yfoucade          #+#    #+#             */
-/*   Updated: 2022/09/28 16:25:48 by yfoucade         ###   ########.fr       */
+/*   Updated: 2022/10/01 23:10:27 by yfoucade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "math_lib.h"
 
 t_point	*create(double x, double y)
 {

@@ -6,11 +6,11 @@
 /*   By: yfoucade <yfoucade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 15:54:02 by yfoucade          #+#    #+#             */
-/*   Updated: 2022/09/29 16:10:48 by yfoucade         ###   ########.fr       */
+/*   Updated: 2022/10/01 23:11:12 by yfoucade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "math_lib.h"
 
 t_point	*scalar_mul(t_point *a, double val, char free_byte)
 {

@@ -6,11 +6,11 @@
 /*   By: yfoucade <yfoucade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 15:55:03 by yfoucade          #+#    #+#             */
-/*   Updated: 2022/09/29 16:09:41 by yfoucade         ###   ########.fr       */
+/*   Updated: 2022/10/01 23:11:00 by yfoucade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "math_lib.h"
 
 t_point	*neg(t_point *a, char free_byte)
 {

@@ -6,11 +6,11 @@
 /*   By: yfoucade <yfoucade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 16:00:00 by yfoucade          #+#    #+#             */
-/*   Updated: 2022/09/29 16:14:50 by yfoucade         ###   ########.fr       */
+/*   Updated: 2022/10/01 23:05:57 by yfoucade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "math_lib.h"
 
 t_point	*sub(t_point *a, t_point *b, char free_byte)
 {
