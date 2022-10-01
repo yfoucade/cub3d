@@ -6,7 +6,7 @@
 /*   By: yfoucade <yfoucade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 22:18:10 by yfoucade          #+#    #+#             */
-/*   Updated: 2022/10/01 22:18:42 by yfoucade         ###   ########.fr       */
+/*   Updated: 2022/10/01 23:36:09 by yfoucade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 int	main(int ac, char **av)
 {
-	(void)ac, (void)av;
+	(void)av;
+	if (ac != 2)
+		return (error_msg("Usage: cub3d map\n"));
 	return (0);
 }
