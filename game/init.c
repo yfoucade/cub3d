@@ -6,7 +6,7 @@
 /*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 17:05:04 by jallerha          #+#    #+#             */
-/*   Updated: 2022/09/29 18:27:21 by jallerha         ###   ########.fr       */
+/*   Updated: 2022/10/01 22:41:54 by jallerha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,13 @@ void	ft_load_textures(t_game *game)
 	int	ignore;
 
 	game->mlx.no_img = mlx_xpm_file_to_image(game->mlx.mlx_ptr,
-		game->no_path, &ignore, &ignore);
+			game->no_path, &ignore, &ignore);
 	game->mlx.so_img = mlx_xpm_file_to_image(game->mlx.mlx_ptr,
-		game->so_path, &ignore, &ignore);
+			game->so_path, &ignore, &ignore);
 	game->mlx.we_img = mlx_xpm_file_to_image(game->mlx.mlx_ptr,
-		game->we_path, &ignore, &ignore);
+			game->we_path, &ignore, &ignore);
 	game->mlx.ea_img = mlx_xpm_file_to_image(game->mlx.mlx_ptr,
-		game->ea_path, &ignore, &ignore);
+			game->ea_path, &ignore, &ignore);
 	if (!game->mlx.no_img)
 		ft_print_error(game, "Failed to load NO texture", 1);
 	if (!game->mlx.so_img)
@@ -49,7 +49,7 @@ void	ft_init_mlx(t_game *game)
 	if (!game->mlx.mlx_ptr)
 		ft_print_error(game, "Failed to initialize MLX", 1);
 	game->mlx.win_ptr = mlx_new_window(game->mlx.mlx_ptr,
-		WINDOW_WIDTH, WINDOW_HEIGHT, "cub3d");
+			WINDOW_WIDTH, WINDOW_HEIGHT, "cub3d");
 	if (!game->mlx.win_ptr)
 		ft_print_error(game, "Failed to create window", 1);
 	ft_load_textures(game);
@@ -59,13 +59,11 @@ void	ft_init_mlx(t_game *game)
 // This function can be removed
 void	ft_demo_color(t_game *game)
 {
-	int width;
-	int height;
+	int	width;
+	int	height;
 	int	x;
 	int	y;
 
-	// set top half to ceiling color
-	// set bottom half to floor color
 	width = WINDOW_WIDTH;
 	height = WINDOW_HEIGHT;
 	y = 0;
@@ -75,9 +73,11 @@ void	ft_demo_color(t_game *game)
 		while (x < width)
 		{
 			if (y < height / 2)
-				mlx_pixel_put(game->mlx.mlx_ptr, game->mlx.win_ptr, x, y, game->ceiling_color.color_hex);
+				mlx_pixel_put(game->mlx.mlx_ptr,
+					game->mlx.win_ptr, x, y, game->ceiling_color.color_hex);
 			else
-				mlx_pixel_put(game->mlx.mlx_ptr, game->mlx.win_ptr, x, y, game->floor_color.color_hex);
+				mlx_pixel_put(game->mlx.mlx_ptr,
+					game->mlx.win_ptr, x, y, game->floor_color.color_hex);
 			x++;
 		}
 		y++;
