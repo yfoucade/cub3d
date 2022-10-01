@@ -79,7 +79,7 @@ fclean: clean
 re: fclean all
 
 norme:
-	@ ${NORMINETTE_BIN} ${SRCS} includes
+	@ ${NORMINETTE_BIN} ${SRCS} includes/debug.h includes/game.h includes/linter.h includes/parsing.h
 
 sym:
 	${NM_BIN} -n $(OBJS)
