@@ -9,26 +9,32 @@ LIB = -lft -lmlx -lX11 -lXext
 
 all: ${NAME}
 
-OBJ_NAMES = main.o
+OBJ_NAMES = \
+	error.o \
+	main.o \
+	math_lib/add_points.o \
 
 OBJ = $(addprefix src/, ${OBJ_NAMES})
 
-${NAME}: ${OBJ} #libft/libft.a minilibx-linux/libmlx.a
-	${CC} ${CFLAGS} -o $@ ${OBJ}
+${NAME}: ${OBJ} libft/libft.a #minilibx-linux/libmlx.a
+	${CC} ${CFLAGS} -o $@ ${OBJ} -lft -L.
 
 %.o: %.c
-	${CC} ${CFLAGS} -c -o ${<:.c=.o} $^ -I include
+	${CC} ${CFLAGS} -c -o ${<:.c=.o} $^ -Iinclude -Ilibft
 
 libft/libft.a:
 	make -C libft
+	cp libft/libft.a .
 
 minilibx-linux/libmlx.a:
 	make -C minilibx-linux
 
 clean:
 	${RM} ${OBJ}
+	make -C libft clean
 
 fclean: clean
 	${RM} ${NAME}
+	make -C libft fclean
 
 re: fclean all
