@@ -16,8 +16,8 @@ OBJ_NAMES = \
 
 OBJ = $(addprefix src/, ${OBJ_NAMES})
 
-${NAME}: ${OBJ} libft/libft.a #minilibx-linux/libmlx.a
-	${CC} ${CFLAGS} -o $@ ${OBJ} -lft -L.
+${NAME}: ${OBJ} libft/libft.a minilibx-linux/libmlx.a
+	${CC} ${CFLAGS} -o $@ ${OBJ} -L. ${LIB}
 
 %.o: %.c
 	${CC} ${CFLAGS} -c -o ${<:.c=.o} $^ -Iinclude -Ilibft
@@ -28,13 +28,15 @@ libft/libft.a:
 
 minilibx-linux/libmlx.a:
 	make -C minilibx-linux
+	cp minilibx-linux/libmlx.a .
 
 clean:
 	${RM} ${OBJ}
 	make -C libft clean
+	make -C minilibx-linux clean
 
 fclean: clean
-	${RM} ${NAME}
+	${RM} ${NAME} libft.a libmlx.a minilibx-linux/libmlx.a
 	make -C libft fclean
 
 re: fclean all
