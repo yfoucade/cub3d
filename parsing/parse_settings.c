@@ -6,7 +6,7 @@
 /*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/26 22:29:38 by jallerha          #+#    #+#             */
-/*   Updated: 2022/09/28 13:05:44 by jallerha         ###   ########.fr       */
+/*   Updated: 2022/10/01 19:22:39 by jallerha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	ft_parse_line(t_game *game, char *s)
 {
 	if (is_empty(s))
 		return ;
+	ft_lstrip(s);
 	if (ft_strncmp(s, "F ", 2) == 0)
 		ft_set_color(game, s + 2, &game->floor_color);
 	else if (ft_strncmp(s, "C ", 2) == 0)
