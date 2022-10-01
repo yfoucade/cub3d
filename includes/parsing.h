@@ -6,7 +6,7 @@
 /*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 13:57:37 by jallerha          #+#    #+#             */
-/*   Updated: 2022/09/29 16:59:15 by jallerha         ###   ########.fr       */
+/*   Updated: 2022/10/01 20:46:20 by jallerha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,4 +69,7 @@ void		ft_map_to_matrix(t_game *game);
 void		ft_matrix_sanity(t_game *game);
 int			ft_is_spawn_char(char c);
 t_color		ft_parse_rgb(char *s);
+int			ft_find_shortest_seq(t_chain_lst *lines);
+void		ft_remove_spaces(t_chain_lst *lines);
+
 #endif

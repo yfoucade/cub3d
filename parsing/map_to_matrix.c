@@ -6,7 +6,7 @@
 /*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 16:22:22 by jallerha          #+#    #+#             */
-/*   Updated: 2022/10/01 19:46:44 by jallerha         ###   ########.fr       */
+/*   Updated: 2022/10/01 22:12:27 by jallerha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ void	ft_map_to_matrix(t_game *game)
 	int			candidate;
 	t_chain_lst	*lines;
 
+	rows = 0;
 	cols = 0;
 	lines = game->map_lines;
 	while (lines)

@@ -18,6 +18,8 @@ SRCS =  main.c \
 		parsing/sanity/map_sanity.c \
 		parsing/sanity/matrix_sanity.c \
 		parsing/map_to_matrix.c \
+		parsing/optimize/count_spaces.c \
+		parsing/optimize/remove_spaces.c \
 		debug/print_game_struct.c \
 		debug/print_color_struct.c \
 		debug/print_matrix.c \
