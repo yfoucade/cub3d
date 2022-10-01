@@ -6,7 +6,7 @@
 /*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 16:22:22 by jallerha          #+#    #+#             */
-/*   Updated: 2022/09/29 16:46:48 by jallerha         ###   ########.fr       */
+/*   Updated: 2022/10/01 19:46:44 by jallerha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void	ft_map_to_matrix(t_game *game)
 		if (!is_empty((char *) lines->content))
 		{
 			candidate = ft_strlen((char *) lines->content);
-			if (candidate > cols)
+			if (candidate > rows)
 				rows = candidate;
 			cols++;
 		}
