@@ -6,7 +6,7 @@
 /*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 00:57:10 by jallerha          #+#    #+#             */
-/*   Updated: 2022/09/29 18:25:12 by jallerha         ###   ########.fr       */
+/*   Updated: 2022/10/01 21:53:06 by jallerha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,6 @@ t_color	ft_parse_rgb(char *s)
 	t_color		output;
 	t_chain_lst	*lst;
 
-	ft_bzero(&output, sizeof(t_color));
 	if (ft_count_words(s, ",") != 2)
 		return (output);
 	lst = ft_split(s, ",");
