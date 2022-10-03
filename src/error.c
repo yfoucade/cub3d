@@ -6,7 +6,7 @@
 /*   By: yfoucade <yfoucade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 23:23:35 by yfoucade          #+#    #+#             */
-/*   Updated: 2022/10/01 23:27:59 by yfoucade         ###   ########.fr       */
+/*   Updated: 2022/10/03 10:14:54 by yfoucade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 int	error_msg(char *msg)
 {
-	ft_putfd(msg, STDERR_FILENO);
+	ft_putstr_fd(msg, STDERR_FILENO);
 	return (FAILURE);
 }
