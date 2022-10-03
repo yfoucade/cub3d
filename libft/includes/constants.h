@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   constants.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yfoucade <yfoucade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 13:26:49 by jallerha          #+#    #+#             */
-/*   Updated: 2022/03/08 22:39:47 by jallerha         ###   ########.fr       */
+/*   Updated: 2022/10/03 10:06:24 by yfoucade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # define STDOUT 1
 # define STDERR 2
 
-# define ERROR 0
-# define SUCCESS 1
+# define SUCCESS 0
+# define ERROR 1
 
 #endif 
