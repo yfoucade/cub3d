@@ -3,7 +3,7 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror -g
 RM = rm -rf
 
-INC = -Iinclude -Ilibft/includes
+INC = -Iincludes -Ilibft/includes
 LIB = -lft -lmlx -lX11 -lXext
 
 .PHONY: all clean fclean re
