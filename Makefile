@@ -3,6 +3,7 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror -g
 RM = rm -rf
 
+INC = -Iinclude -Ilibft/includes
 LIB = -lft -lmlx -lX11 -lXext
 
 .PHONY: all clean fclean re
@@ -20,7 +21,7 @@ ${NAME}: ${OBJ} libft/libft.a minilibx-linux/libmlx.a
 	${CC} ${CFLAGS} -o $@ ${OBJ} -L. ${LIB}
 
 %.o: %.c
-	${CC} ${CFLAGS} -c -o ${<:.c=.o} $^ -Iinclude -Ilibft
+	${CC} ${CFLAGS} -c -o ${<:.c=.o} $^ ${INC}
 
 libft/libft.a:
 	make -C libft
