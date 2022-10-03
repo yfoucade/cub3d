@@ -4,7 +4,7 @@ CFLAGS = -Wall -Wextra -Werror -g
 RM = rm -rf
 
 INC = -Iincludes -Ilibft/includes
-LIB = -lft -lmlx -lX11 -lXext
+LIB = -L. -lft -lmlx -lX11 -lXext
 
 .PHONY: all clean fclean re
 
@@ -18,7 +18,7 @@ OBJ_NAMES = \
 OBJ = $(addprefix src/, ${OBJ_NAMES})
 
 ${NAME}: ${OBJ} libft/libft.a minilibx-linux/libmlx.a
-	${CC} ${CFLAGS} -o $@ ${OBJ} -L. ${LIB}
+	${CC} ${CFLAGS} -o $@ ${OBJ} ${LIB}
 
 %.o: %.c
 	${CC} ${CFLAGS} -c -o ${<:.c=.o} $^ ${INC}
