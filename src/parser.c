@@ -6,7 +6,7 @@
 /*   By: yfoucade <yfoucade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 14:49:42 by yfoucade          #+#    #+#             */
-/*   Updated: 2022/10/07 01:00:24 by yfoucade         ###   ########.fr       */
+/*   Updated: 2022/10/07 18:33:49 by yfoucade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -399,16 +399,6 @@ char	textures_set(t_game *game)
 	return (TRUE);
 }
 
-void	update_plane(t_game *game)
-{
-	double	x;
-	double	y;
-
-	x = game->player_dir->y * GST_DIR_SIZE / GST_PLANE_SIZE;
-	y = -game->player_dir->x * GST_DIR_SIZE / GST_PLANE_SIZE;
-	game->camera_plane = create(x, y);
-}
-
 char	set_pos_dir_plane(t_game *game, int row, int col)
 {
 	if (game->player_pos)
@@ -425,8 +415,6 @@ char	set_pos_dir_plane(t_game *game, int row, int col)
 	if (!game->player_pos || !game->player_dir)
 		return (FAILURE);
 	update_plane(game);
-	if (!game->camera_plane)
-		return (FAILURE);
 	return (SUCCESS);
 }
 
@@ -468,5 +456,6 @@ void	parse(int ac, char **av, t_game *game)
 		ft_destroy_game(game);
 		exit(1);
 	}
+	game->init_frame = TRUE;
 	print_game(game);
 }

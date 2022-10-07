@@ -6,7 +6,7 @@
 /*   By: yfoucade <yfoucade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 16:49:36 by yfoucade          #+#    #+#             */
-/*   Updated: 2022/10/07 13:29:49 by yfoucade         ###   ########.fr       */
+/*   Updated: 2022/10/07 18:33:24 by yfoucade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,17 @@
 # include "libft.h"
 # include "mlx.h"
 
+# define XK_Left 0x51
+# define XK_Right 0x53
+
 # define FALSE 0
 # define TRUE 1
 
 # define SUCCESS 0
 # define FAILURE 1
+
+# define KEY_ON 1
+# define KEY_OFF 0
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1024
@@ -46,6 +52,8 @@
 #  define READING 1
 # endif
 
+# define WIN_WIDTH 800
+# define WIN_HEIGHT 450
 # define GST_TILE_SIZE 1
 # define GST_MOVE_SPEED .1
 # define GST_ROT_SPEED 1
@@ -72,6 +80,16 @@ typedef struct s_color
 	int	color_hex;
 }	t_color;
 
+typedef struct s_keys
+{
+	char	w;
+	char	a;
+	char	s;
+	char	d;
+	char	left;
+	char	right;
+}	t_keys;
+
 typedef struct	s_mlx
 {
 	void	*mlx_ptr;
@@ -80,12 +98,14 @@ typedef struct	s_mlx
 	void	*so_img;
 	void	*we_img;
 	void	*ea_img;
+	void	*curr_frame;
 }	t_mlx;
 
 typedef struct s_game
 {
 	int			map_width;
 	int			map_height;
+	char		init_frame;
 	t_point		*player_pos;
 	t_point		*player_dir;
 	t_point		*camera_plane;
@@ -95,12 +115,14 @@ typedef struct s_game
 	char		**map;
 	// t_matrix	matrix;
 	t_mlx		mlx;
+	t_keys		pressed_keys;
 }	t_game;
 
 int		error_msg(char *msg, int exit_value);
 
 // cub3d.c
 void	run_game(t_game *game);
+void	update_plane(t_game *game);
 
 // destroy.c
 void	ft_destroy_mlx(t_game *game);
