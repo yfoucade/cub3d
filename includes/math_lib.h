@@ -6,7 +6,7 @@
 /*   By: yfoucade <yfoucade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 23:01:04 by yfoucade          #+#    #+#             */
-/*   Updated: 2022/10/07 21:24:54 by yfoucade         ###   ########.fr       */
+/*   Updated: 2022/10/07 22:17:25 by yfoucade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ t_point	add(t_point a, t_point b);
 t_point	copy(t_point a);
 t_point	create(double x, double y);
 double	dist(t_point a, t_point b);
+t_point	get_perp(t_point a, double target_norm);
 double	inner_product(t_point a, t_point b);
 t_point	neg(t_point a);
 t_point	normalize(t_point a);
