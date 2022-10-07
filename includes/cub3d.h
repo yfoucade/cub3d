@@ -6,7 +6,7 @@
 /*   By: yfoucade <yfoucade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 16:49:36 by yfoucade          #+#    #+#             */
-/*   Updated: 2022/10/07 11:49:30 by yfoucade         ###   ########.fr       */
+/*   Updated: 2022/10/07 13:29:49 by yfoucade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,12 @@
 # endif
 
 # define DEBUG_PRINT(...) if (DEBUG) { printf("[%s:%d] ", __FILE__, __LINE__); printf(__VA_ARGS__); }
+
+typedef struct s_file_buffer
+{
+	char	buf[BUFFER_SIZE + 1];
+	int		current_index;
+}	t_file_buffer;
 
 typedef struct s_color
 {
