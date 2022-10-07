@@ -22,7 +22,9 @@ SRC_NAMES = \
 	math_lib/copy.c \
 	math_lib/create.c \
 	math_lib/dist.c \
+	math_lib/inner_product.c \
 	math_lib/neg.c \
+	math_lib/normalize.c \
 	math_lib/norm.c \
 	math_lib/rot.c \
 	math_lib/scalar_mul.c \
