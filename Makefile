@@ -4,24 +4,38 @@ CFLAGS = -Wall -Wextra -Werror -g
 RM = rm -rf
 
 INC = -Iincludes -Ilibft/includes
-LIB = -L. -lft -lmlx -lX11 -lXext
+LIB = -L. -lft -lmlx -lX11 -lXext -lm
 
 .PHONY: all clean fclean re
 
 all: ${NAME}
 
-OBJ_NAMES = \
-	error.o \
-	main.o \
-	math_lib/add_points.o \
+SRC_NAMES = \
+	cub3d.c \
+	destroy.c \
+	error.c \
+	get_next_line.c \
+	main.c \
+	parser.c \
+	print_utils.c \
+	math_lib/add_points.c \
+	math_lib/copy.c \
+	math_lib/create.c \
+	math_lib/dist.c \
+	math_lib/neg.c \
+	math_lib/norm.c \
+	math_lib/rot.c \
+	math_lib/scalar_mul.c \
+	math_lib/sub.c \
 
-OBJ = $(addprefix src/, ${OBJ_NAMES})
+SRC = $(addprefix src/, ${SRC_NAMES})
+OBJ = ${SRC:.c=.o}
 
 ${NAME}: ${OBJ} libft/libft.a minilibx-linux/libmlx.a
 	${CC} ${CFLAGS} -o $@ ${OBJ} ${LIB}
 
-%.o: %.c
-	${CC} ${CFLAGS} -c -o ${<:.c=.o} $^ ${INC}
+%.o: %.c includes/cub3d.h includes/math_lib.h
+	${CC} ${CFLAGS} -c -o ${<:.c=.o} $< ${INC}
 
 libft/libft.a:
 	make -C libft
