@@ -6,7 +6,7 @@
 /*   By: yfoucade <yfoucade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 23:01:04 by yfoucade          #+#    #+#             */
-/*   Updated: 2022/10/07 12:17:48 by yfoucade         ###   ########.fr       */
+/*   Updated: 2022/10/07 19:00:21 by yfoucade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,16 @@ typedef struct s_point
 }	t_point;
 
 // math_lib.c
-t_point	*add(t_point *a, t_point *b, char free_byte);
-t_point	*copy(t_point *a);
-t_point	*create(double x, double y);
-double	dist(t_point *a, t_point *b, char free_byte);
-// double	inner_product(t_point *a, t_point *b, char free_byte);
-t_point	*neg(t_point *a, char free_byte);
-// t_point	*normalize(t_point *a, char free_byte);
-double	norm(t_point *a, char free_byte);
-t_point	*rot(t_point *a, double theta, char free_byte);
-t_point	*scalar_mul(t_point *a, double val, char free_byte);
-t_point	*sub(t_point *a, t_point *b, char free_byte);
+t_point	add(t_point a, t_point b);
+t_point	copy(t_point a);
+t_point	create(double x, double y);
+double	dist(t_point a, t_point b);
+// double	inner_product(t_point a, t_point b);
+t_point	neg(t_point a);
+// t_point	*normalize(t_point a);
+double	norm(t_point a);
+t_point	rot(t_point a, double theta);
+t_point	scalar_mul(t_point a, double val);
+t_point	sub(t_point a, t_point b);
 
 #endif

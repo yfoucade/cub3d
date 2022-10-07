@@ -6,13 +6,13 @@
 /*   By: yfoucade <yfoucade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 15:55:03 by yfoucade          #+#    #+#             */
-/*   Updated: 2022/10/01 23:11:00 by yfoucade         ###   ########.fr       */
+/*   Updated: 2022/10/07 21:06:22 by yfoucade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "math_lib.h"
 
-t_point	*neg(t_point *a, char free_byte)
+t_point	neg(t_point a)
 {
-	return (scalar_mul(a, -1, free_byte));
+	return (scalar_mul(a, -1));
 }

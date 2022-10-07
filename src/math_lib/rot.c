@@ -6,23 +6,18 @@
 /*   By: yfoucade <yfoucade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 15:48:49 by yfoucade          #+#    #+#             */
-/*   Updated: 2022/10/01 23:11:08 by yfoucade         ###   ########.fr       */
+/*   Updated: 2022/10/07 21:12:35 by yfoucade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "math_lib.h"
 
-t_point	*rot(t_point *a, double theta, char free_byte)
+/** Clockwise rotation **/
+t_point	rot(t_point a, double theta)
 {
-	t_point	*res;
+	t_point	res;
 
-	res = malloc(sizeof(t_point));
-	if (res)
-	{
-		res->x = a->x * cos(theta) + a->y * sin(theta);
-		res->y = a->y * cos(theta) - a->x * sin(theta);
-	}
-	if (free_byte & FREE_A)
-		free(a);
+	res.x = a.x * cos(theta) - a.y * sin(theta);
+	res.y = a.y * cos(theta) + a.x * sin(theta);
 	return (res);
 }

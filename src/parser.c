@@ -6,7 +6,7 @@
 /*   By: yfoucade <yfoucade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 14:49:42 by yfoucade          #+#    #+#             */
-/*   Updated: 2022/10/07 18:33:49 by yfoucade         ###   ########.fr       */
+/*   Updated: 2022/10/07 21:16:19 by yfoucade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -401,7 +401,7 @@ char	textures_set(t_game *game)
 
 char	set_pos_dir_plane(t_game *game, int row, int col)
 {
-	if (game->player_pos)
+	if (game->player_pos.x)
 		return (FAILURE); // multiple starting positions.
 	game->player_pos = create(col * (GST_TILE_SIZE) + .5, row * (GST_TILE_SIZE) + .5);
 	if (game->map[row][col] == 'N')
@@ -412,8 +412,6 @@ char	set_pos_dir_plane(t_game *game, int row, int col)
 		game->player_dir = create(-1, 0);
 	if (game->map[row][col] == 'S')
 		game->player_dir = create(0, 1);
-	if (!game->player_pos || !game->player_dir)
-		return (FAILURE);
 	update_plane(game);
 	return (SUCCESS);
 }

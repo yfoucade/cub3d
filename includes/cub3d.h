@@ -6,7 +6,7 @@
 /*   By: yfoucade <yfoucade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 16:49:36 by yfoucade          #+#    #+#             */
-/*   Updated: 2022/10/07 18:33:24 by yfoucade         ###   ########.fr       */
+/*   Updated: 2022/10/07 21:14:55 by yfoucade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,9 +106,9 @@ typedef struct s_game
 	int			map_width;
 	int			map_height;
 	char		init_frame;
-	t_point		*player_pos;
-	t_point		*player_dir;
-	t_point		*camera_plane;
+	t_point		player_pos;
+	t_point		player_dir;
+	t_point		camera_plane;
 	t_color		*floor_color;
 	t_color		*ceiling_color;
 	t_str_list	*map_lines;

@@ -6,23 +6,15 @@
 /*   By: yfoucade <yfoucade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/28 15:54:02 by yfoucade          #+#    #+#             */
-/*   Updated: 2022/10/01 23:11:12 by yfoucade         ###   ########.fr       */
+/*   Updated: 2022/10/07 21:13:38 by yfoucade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "math_lib.h"
 
-t_point	*scalar_mul(t_point *a, double val, char free_byte)
+t_point	scalar_mul(t_point a, double val)
 {
-	t_point	*res;
-
-	res = malloc(sizeof(t_point));
-	if (res)
-	{
-		res->x = val * a->x;
-		res->y = val * a->y;
-	}
-	if (free_byte & FREE_A)
-		free(a);
-	return (res);
+	a.x *= val;
+	a.y *= val;
+	return (a);
 }

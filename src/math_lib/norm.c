@@ -6,20 +6,13 @@
 /*   By: yfoucade <yfoucade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 15:23:09 by yfoucade          #+#    #+#             */
-/*   Updated: 2022/10/01 23:11:04 by yfoucade         ###   ########.fr       */
+/*   Updated: 2022/10/07 21:07:10 by yfoucade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "math_lib.h"
 
-double	norm(t_point *a, char free_byte)
+double	norm(t_point a)
 {
-	double	res;
-
-	if (!a)
-		return (-1);
-	res = sqrt(pow(a->x, 2) + pow(a->y, 2));
-	if (free_byte & FREE_A)
-		free(a);
-	return (res);
+	return (sqrt(pow(a.x, 2) + pow(a.y, 2)));
 }
