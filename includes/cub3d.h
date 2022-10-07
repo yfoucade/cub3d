@@ -6,7 +6,7 @@
 /*   By: yfoucade <yfoucade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 16:49:36 by yfoucade          #+#    #+#             */
-/*   Updated: 2022/10/07 21:14:55 by yfoucade         ###   ########.fr       */
+/*   Updated: 2022/10/07 23:05:45 by yfoucade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@
 # include "libft.h"
 # include "mlx.h"
 
-# define XK_Left 0x51
-# define XK_Right 0x53
+# define XK_Left 0xff51
+# define XK_Right 0xff53
 
 # define FALSE 0
 # define TRUE 1
@@ -54,11 +54,13 @@
 
 # define WIN_WIDTH 800
 # define WIN_HEIGHT 450
+
+// Game settings
 # define GST_TILE_SIZE 1
-# define GST_MOVE_SPEED .1
-# define GST_ROT_SPEED 1
-# define GST_DIR_SIZE .1
-# define GST_PLANE_SIZE .1
+# define GST_MOVE_SPEED .0001
+# define GST_ROT_SPEED .00005
+# define GST_DIR_SIZE 1
+# define GST_PLANE_SIZE 1
 
 # ifndef DEBUG
 #  define DEBUG 1
@@ -135,6 +137,7 @@ char	*get_next_line(int fd);
 void	parse(int ac, char **av, t_game *game);
 
 //print_utils.c
+void	print_point(char *s1, t_point a, char *s2);
 void	print_game(t_game *game);
 void	print_array(char **array);
 
