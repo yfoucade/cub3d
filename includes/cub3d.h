@@ -6,7 +6,7 @@
 /*   By: yfoucade <yfoucade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 16:49:36 by yfoucade          #+#    #+#             */
-/*   Updated: 2022/10/22 13:26:48 by yfoucade         ###   ########.fr       */
+/*   Updated: 2022/10/22 20:20:10 by yfoucade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,29 +92,26 @@ typedef struct s_keys
 	char	right;
 }	t_keys;
 
-typedef struct	s_img_data
+typedef struct	s_img
 {
-	char	*img_addr;
+	void	*img_ptr;
+	char	*data_addr;
 	int		bits_per_pixel;
 	int		size_line;
 	int		endian;
 	int		width;
 	int		height;
-}	t_img_data;
+}	t_img;
 
 typedef struct	s_mlx
 {
 	void		*mlx_ptr;
 	void		*win_ptr;
-	void		*no_img;
-	t_img_data	no_data;
-	void		*so_img;
-	t_img_data	so_data;
-	void		*we_img;
-	t_img_data	we_data;
-	void		*ea_img;
-	t_img_data	ea_data;
-	void		*curr_frame;
+	t_img		curr_frame;
+	t_img		no_img;
+	t_img		so_img;
+	t_img		we_img;
+	t_img		ea_img;
 }	t_mlx;
 
 typedef struct s_game
@@ -131,7 +128,6 @@ typedef struct s_game
 	char		**map;
 	// t_matrix	matrix;
 	t_mlx		mlx;
-	t_img_data	frame_data;
 	t_keys		pressed_keys;
 }	t_game;
 

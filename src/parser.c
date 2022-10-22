@@ -6,7 +6,7 @@
 /*   By: yfoucade <yfoucade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 14:49:42 by yfoucade          #+#    #+#             */
-/*   Updated: 2022/10/07 21:16:19 by yfoucade         ###   ########.fr       */
+/*   Updated: 2022/10/22 20:36:30 by yfoucade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,19 +30,20 @@ char	is_empty_line(char *line)
 	return (TRUE);
 }
 
-char	add_texture(char *path, t_game *game, void **texture_holder)
+char	add_texture(char *path, t_game *game, t_img *img)
 {
-	int	ignore;
-
 	ft_strip(path);
-	*texture_holder = mlx_xpm_file_to_image(game->mlx.mlx_ptr, path, &ignore, &ignore);
-	if (!*texture_holder)
+	img->img_ptr = mlx_xpm_file_to_image(game->mlx.mlx_ptr, path,
+		&img->width, &img->height);
+	if (!img->img_ptr)
 	{
 		ft_putstr_fd("Error\nCould not load texture: ", 2);
 		ft_putstr_fd(path, 2);
 		ft_putstr_fd("\n", 2);
 		return (FAILURE);
 	}
+	img->data_addr = mlx_get_data_addr(game->mlx.mlx_ptr, &img->bits_per_pixel,
+		&img->size_line, &img->endian);
 	return (SUCCESS);
 }
 
@@ -384,13 +385,13 @@ char	map_is_closed(t_game *game)
 
 char	textures_set(t_game *game)
 {
-	if (!game->mlx.no_img)
+	if (!game->mlx.no_img.img_ptr)
 		return (FALSE);
-	if (!game->mlx.so_img)
+	if (!game->mlx.so_img.img_ptr)
 		return (FALSE);
-	if (!game->mlx.ea_img)
+	if (!game->mlx.ea_img.img_ptr)
 		return (FALSE);
-	if (!game->mlx.we_img)
+	if (!game->mlx.we_img.img_ptr)
 		return (FALSE);
 	if (!game->floor_color)
 		return (FALSE);

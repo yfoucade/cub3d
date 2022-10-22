@@ -6,7 +6,7 @@
 /*   By: yfoucade <yfoucade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 14:48:10 by yfoucade          #+#    #+#             */
-/*   Updated: 2022/10/22 13:55:46 by yfoucade         ###   ########.fr       */
+/*   Updated: 2022/10/22 20:31:58 by yfoucade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,9 +115,9 @@ void	ft_put_pixel(t_game *game, int row, int col, int hex)
 {
 	char	*pixel_addr;
 
-	pixel_addr = game->frame_data.img_addr;
-	pixel_addr += row * game->frame_data.size_line;
-	pixel_addr += col * game->frame_data.bits_per_pixel / 8;
+	pixel_addr = game->mlx.curr_frame.data_addr;
+	pixel_addr += row * game->mlx.curr_frame.size_line;
+	pixel_addr += col * game->mlx.curr_frame.bits_per_pixel / 8;
 	*(int *)pixel_addr = hex;
 }
 
@@ -158,7 +158,7 @@ void	draw_frame(t_game *game)
 	draw_background(game);
 	draw_walls(game);
 	mlx_put_image_to_window(game->mlx.mlx_ptr, game->mlx.win_ptr,
-		game->mlx.curr_frame, 0, 0);
+		game->mlx.curr_frame.img_ptr, 0, 0);
 }
 
 int	ft_game_loop(t_game *game)
@@ -197,21 +197,21 @@ void	create_window(t_game *game)
 
 void	create_frame(t_game *game)
 {
-	game->mlx.curr_frame = mlx_new_image(game->mlx.mlx_ptr,
+	game->mlx.curr_frame.img_ptr = mlx_new_image(game->mlx.mlx_ptr,
 			WIN_WIDTH, WIN_HEIGHT);
-	if (!game->mlx.curr_frame)
+	if (!game->mlx.curr_frame.img_ptr)
 	{
 		ft_destroy_game(game);
 		error_msg("Failed to create image\n", 1);
 	}
-	game->frame_data.img_addr = mlx_get_data_addr(
-		game->mlx.curr_frame,
-		&game->frame_data.bits_per_pixel,
-		&game->frame_data.size_line,
-		&game->frame_data.endian
+	game->mlx.curr_frame.data_addr = mlx_get_data_addr(
+		game->mlx.curr_frame.img_ptr,
+		&game->mlx.curr_frame.bits_per_pixel,
+		&game->mlx.curr_frame.size_line,
+		&game->mlx.curr_frame.endian
 	);
-	game->frame_data.width = WIN_WIDTH;
-	game->frame_data.height = WIN_HEIGHT;
+	game->mlx.curr_frame.width = WIN_WIDTH;
+	game->mlx.curr_frame.height = WIN_HEIGHT;
 }
 
 void	run_game(t_game *game)
