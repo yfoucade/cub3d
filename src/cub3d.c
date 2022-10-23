@@ -6,7 +6,7 @@
 /*   By: yfoucade <yfoucade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 14:48:10 by yfoucade          #+#    #+#             */
-/*   Updated: 2022/10/22 20:31:58 by yfoucade         ###   ########.fr       */
+/*   Updated: 2022/10/23 22:20:45 by yfoucade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,12 +133,26 @@ void	draw_background(t_game *game)
 		while (++col < WIN_WIDTH)
 			ft_put_pixel(game, row, col, game->ceiling_color->color_hex);
 	}
+	--row;
 	while (++row < WIN_HEIGHT)
 	{
 		col = -1;
 		while (++col < WIN_WIDTH)
 			ft_put_pixel(game, row, col, game->floor_color->color_hex);
 	}
+}
+
+void	draw_vertical_line(t_game *game, int x)
+{
+	// double	camera_x;
+	// t_point	ray;
+	// t_point	map_coord;
+
+	// camera_x = 2 * x / (double)WIN_WIDTH - 1;
+	// ray = add(game->player_dir, scalar_mul(game->camera_plane, camera_x));
+	// map_coord = create((int)game->player_pos.x, (int)game->player_pos.y);
+	(void)game;
+	(void)x;
 }
 
 void	draw_walls(t_game *game)
@@ -149,7 +163,7 @@ void	draw_walls(t_game *game)
 	(void)game;
 	while (++x < WIN_WIDTH)
 	{
-		;
+		draw_vertical_line(game, x);
 	}
 }
 
