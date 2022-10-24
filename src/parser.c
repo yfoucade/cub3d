@@ -6,7 +6,7 @@
 /*   By: yfoucade <yfoucade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 14:49:42 by yfoucade          #+#    #+#             */
-/*   Updated: 2022/10/22 20:36:30 by yfoucade         ###   ########.fr       */
+/*   Updated: 2022/10/24 02:34:44 by yfoucade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ char	add_texture(char *path, t_game *game, t_img *img)
 		ft_putstr_fd("\n", 2);
 		return (FAILURE);
 	}
-	img->data_addr = mlx_get_data_addr(game->mlx.mlx_ptr, &img->bits_per_pixel,
+	img->data_addr = mlx_get_data_addr(img->img_ptr, &img->bits_per_pixel,
 		&img->size_line, &img->endian);
 	return (SUCCESS);
 }
