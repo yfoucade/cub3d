@@ -6,7 +6,7 @@
 /*   By: yfoucade <yfoucade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 16:49:36 by yfoucade          #+#    #+#             */
-/*   Updated: 2022/10/22 20:20:10 by yfoucade         ###   ########.fr       */
+/*   Updated: 2022/10/24 02:54:43 by yfoucade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 
 # define XK_Left 0xff51
 # define XK_Right 0xff53
+# define XK_Escape 0xff1b
 
 # define FALSE 0
 # define TRUE 1
@@ -57,10 +58,11 @@
 
 // Game settings
 # define GST_TILE_SIZE 1
-# define GST_MOVE_SPEED .0001
-# define GST_ROT_SPEED .00005
+# define GST_MOVE_SPEED .025
+# define GST_ROT_SPEED .009
 # define GST_DIR_SIZE 1
 # define GST_PLANE_SIZE 1
+# define GST_WALL_HEIGHT 50
 
 # ifndef DEBUG
 #  define DEBUG 1
@@ -114,6 +116,23 @@ typedef struct	s_mlx
 	t_img		ea_img;
 }	t_mlx;
 
+typedef struct	s_rtvars
+{
+	int		screen_x;
+	double	camera_x;
+	t_point	ray;
+	int		mapX;
+	int		mapY;
+	t_point	sideDist;
+	t_point	deltaDist;
+	double	perpWallDist;
+	int		stepX;
+	int		stepY;
+	int		hit;
+	int		side;
+	t_img	texture;
+}	t_rtvars;
+
 typedef struct s_game
 {
 	int			map_width;
@@ -122,6 +141,7 @@ typedef struct s_game
 	t_point		player_pos;
 	t_point		player_dir;
 	t_point		camera_plane;
+	t_rtvars	rt_vars;
 	t_color		*floor_color;
 	t_color		*ceiling_color;
 	t_str_list	*map_lines;

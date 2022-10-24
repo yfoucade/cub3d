@@ -6,7 +6,7 @@
 /*   By: yfoucade <yfoucade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 14:48:10 by yfoucade          #+#    #+#             */
-/*   Updated: 2022/10/23 22:20:45 by yfoucade         ###   ########.fr       */
+/*   Updated: 2022/10/24 02:56:22 by yfoucade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ void	ft_switch_key_state(int keycode, t_game *game, char state)
 
 int	ft_key_press_hook(int keycode, t_game *game)
 {
+	if (keycode == XK_Escape)
+		ft_redcross(game);
 	ft_switch_key_state(keycode, game, KEY_ON);
 	return (0);
 }
@@ -45,9 +47,9 @@ int	ft_key_press_hook(int keycode, t_game *game)
 int	ft_key_release_hook(int keycode, t_game *game)
 {
 	ft_switch_key_state(keycode, game, KEY_OFF);
-	printf("new pos: %f, %f\n", game->player_pos.x, game->player_pos.y);
-	print_point("dir = ", game->player_dir, "\n");
-	print_point("plane = ", game->camera_plane, "\n");
+	// printf("new pos: %f, %f\n", game->player_pos.x, game->player_pos.y);
+	// print_point("dir = ", game->player_dir, "\n");
+	// print_point("plane = ", game->camera_plane, "\n");
 	return (0);
 }
 
@@ -121,6 +123,16 @@ void	ft_put_pixel(t_game *game, int row, int col, int hex)
 	*(int *)pixel_addr = hex;
 }
 
+int	ft_get_pixel(t_img	img, int row, int col)
+{
+	char	*pixel_addr;
+
+	pixel_addr = img.data_addr;
+	pixel_addr += row * img.size_line;
+	pixel_addr += col * img.bits_per_pixel / 8;
+	return *(int *)pixel_addr;
+}
+
 void	draw_background(t_game *game)
 {
 	int		col;
@@ -142,28 +154,139 @@ void	draw_background(t_game *game)
 	}
 }
 
-void	draw_vertical_line(t_game *game, int x)
+t_img	get_texture(t_game *game)
 {
-	// double	camera_x;
-	// t_point	ray;
-	// t_point	map_coord;
+	if (game->rt_vars.side == 0)
+	{
+		if (game->rt_vars.ray.x < 0)
+			return (game->mlx.ea_img);
+		return (game->mlx.we_img);
+	}
+	if (game->rt_vars.ray.y < 0)
+		return (game->mlx.no_img);
+	return (game->mlx.so_img);
+}
 
-	// camera_x = 2 * x / (double)WIN_WIDTH - 1;
-	// ray = add(game->player_dir, scalar_mul(game->camera_plane, camera_x));
-	// map_coord = create((int)game->player_pos.x, (int)game->player_pos.y);
-	(void)game;
-	(void)x;
+void	print_trgb(int color)
+{
+	int	t, r, g, b;
+
+	t = (color >> 24) & 0xff;
+	r = (color >> 16) & 0xff;
+	g = (color >> 8) & 0xff;
+	b = (color) & 0xff;
+	printf("t = %0x, r = %0x, g = %0x, b = %0x\n", t, r, g, b);
+}
+
+double	ft_abs(double x)
+{
+	if (x < 0)
+		return (-x);
+	return (x);
 }
 
 void	draw_walls(t_game *game)
 {
-	int	x;
-
-	x = -1;
-	(void)game;
-	while (++x < WIN_WIDTH)
+	game->rt_vars.screen_x = -1;
+	while (++game->rt_vars.screen_x < WIN_WIDTH)
 	{
-		draw_vertical_line(game, x);
+		game->rt_vars.hit = 0;
+		game->rt_vars.camera_x = 2 * game->rt_vars.screen_x / (double)WIN_WIDTH - 1;
+		game->rt_vars.ray = add(game->player_dir, scalar_mul(game->camera_plane, game->rt_vars.camera_x));
+		game->rt_vars.mapX = (int)game->player_pos.x;
+		game->rt_vars.mapY = (int)game->player_pos.y;
+		//length of ray from one x or y-side to next x or y-side
+		if (game->rt_vars.ray.x)
+			// game->rt_vars.deltaDist.x = sqrt(1 + (game->rt_vars.ray.y * game->rt_vars.ray.y) / (game->rt_vars.ray.x * game->rt_vars.ray.x));
+			game->rt_vars.deltaDist.x = ft_abs(1 /  game->rt_vars.ray.x);
+		else
+			game->rt_vars.deltaDist.x = 1e10;
+		if (game->rt_vars.ray.y)
+			// game->rt_vars.deltaDist.y = sqrt(1 + (game->rt_vars.ray.x * game->rt_vars.ray.x) / (game->rt_vars.ray.y * game->rt_vars.ray.y));
+			game->rt_vars.deltaDist.y = ft_abs(1 /  game->rt_vars.ray.y);
+		else
+			game->rt_vars.deltaDist.y = 1e10;
+		if (game->rt_vars.ray.x < 0)
+		{
+			game->rt_vars.stepX = -1;
+			game->rt_vars.sideDist.x = (game->player_pos.x - game->rt_vars.mapX) * game->rt_vars.deltaDist.x;
+		}
+		else
+		{
+			game->rt_vars.stepX = 1;
+			game->rt_vars.sideDist.x = (game->rt_vars.mapX + 1.0 - game->player_pos.x) * game->rt_vars.deltaDist.x;
+		}
+		if (game->rt_vars.ray.y < 0)
+		{
+			game->rt_vars.stepY = -1;
+			game->rt_vars.sideDist.y = (game->player_pos.y - game->rt_vars.mapY) * game->rt_vars.deltaDist.y;
+		}
+		else
+		{
+			game->rt_vars.stepY = 1;
+			game->rt_vars.sideDist.y = (game->rt_vars.mapY + 1.0 - game->player_pos.y) * game->rt_vars.deltaDist.y;
+		}
+		//perform DDA
+		while (game->rt_vars.hit == 0)
+		{
+			//jump to next map square, either in x-direction, or in y-direction
+			if (game->rt_vars.sideDist.x < game->rt_vars.sideDist.y)
+			{
+			game->rt_vars.sideDist.x += game->rt_vars.deltaDist.x;
+			game->rt_vars.mapX += game->rt_vars.stepX;
+			game->rt_vars.side = 0;
+			}
+			else
+			{
+			game->rt_vars.sideDist.y += game->rt_vars.deltaDist.y;
+			game->rt_vars.mapY += game->rt_vars.stepY;
+			game->rt_vars.side = 1;
+			}
+			//Check if ray has hit a wall
+			if (game->map[game->rt_vars.mapY][game->rt_vars.mapX] == '1')
+				game->rt_vars.hit = 1;
+		}
+		//Calculate distance of perpendicular ray (Euclidean distance would give fisheye effect!)
+		if(game->rt_vars.side == 0)
+			game->rt_vars.perpWallDist = (game->rt_vars.sideDist.x - game->rt_vars.deltaDist.x);
+		else
+			game->rt_vars.perpWallDist = (game->rt_vars.sideDist.y - game->rt_vars.deltaDist.y);
+
+		//Calculate height of line to draw on screen
+		int lineHeight = (int)(WIN_HEIGHT / game->rt_vars.perpWallDist);
+		//calculate lowest and highest pixel to fill in current stripe
+		int drawStart = -lineHeight / 2 + WIN_HEIGHT / 2;
+		if(drawStart < 0) drawStart = 0;
+		int drawEnd = lineHeight / 2 + WIN_HEIGHT / 2;
+		if(drawEnd >= WIN_HEIGHT) drawEnd = WIN_HEIGHT - 1;
+		t_img	texture = get_texture(game);
+		//calculate value of wallX
+		double wallX; //where exactly the wall was hit
+		if (game->rt_vars.side == 0)
+			wallX = game->player_pos.y + game->rt_vars.perpWallDist * game->rt_vars.ray.y;
+		else
+			wallX = game->player_pos.x + game->rt_vars.perpWallDist * game->rt_vars.ray.x;
+		wallX -= floor((wallX));
+		int texX = (int)((1 - wallX) * (double)(texture.width));
+		if(game->rt_vars.side == 0 && game->rt_vars.ray.x > 0) texX = texture.width - texX - 1;
+		if(game->rt_vars.side == 1 && game->rt_vars.ray.y < 0) texX = texture.width - texX - 1;
+		// How much to increase the texture coordinate per screen pixel
+      	double step = 1.0 * texture.height / lineHeight;
+		// Starting texture coordinate
+      	double texPos = (drawStart - WIN_HEIGHT / 2 + lineHeight / 2) * step;
+		// printf("here\n");
+		// printf("drawing line : %d\n", game->rt_vars.screen_x);
+		for (int y = drawStart; y < drawEnd; y++)
+		{
+			int texY = (int)texPos & (texture.height - 1);
+			// printf("texY, texX = (%d, %d)\n", texY, texX);
+			texPos += step;
+			// int	color = *(int*)(texture.data_addr + texture.size_line * texY + texX);
+			int color = ft_get_pixel(texture, texY, texX);
+			// printf("color = %d\n", color);
+			// print_trgb(color);
+			ft_put_pixel(game, y, game->rt_vars.screen_x, color);
+		}
 	}
 }
 
