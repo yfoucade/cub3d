@@ -6,11 +6,32 @@
 /*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 00:09:48 by jallerha          #+#    #+#             */
-/*   Updated: 2022/10/27 12:13:16 by jallerha         ###   ########.fr       */
+/*   Updated: 2022/10/27 12:20:53 by jallerha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+void	ft_destroy_map(t_game *game)
+{
+	int	i;
+
+	i = 0;
+	while (i < game->map_height)
+	{
+		free(game->map[i]);
+		i++;
+	}
+	free(game->map);
+}
+
+void	ft_destroy_colors(t_game *game)
+{
+	if (game->floor_color)
+		free(game->floor_color);
+	if (game->ceiling_color)
+		free(game->ceiling_color);
+}
 
 void	ft_destroy_mlx(t_game *game)
 {
@@ -37,6 +58,8 @@ void	ft_destroy_game(t_game *game)
 {
 	DEBUG_PRINT("game : %p\n", game);
 	ft_destroy_mlx(game);
+	ft_destroy_map(game);
+	ft_destroy_colors(game);
 	if (game->map_lines)
 		free_str_list(game->map_lines);
 }
