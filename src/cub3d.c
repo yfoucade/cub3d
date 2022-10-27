@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yfoucade <yfoucade@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 14:48:10 by yfoucade          #+#    #+#             */
-/*   Updated: 2022/10/24 02:56:22 by yfoucade         ###   ########.fr       */
+/*   Updated: 2022/10/27 12:13:03 by jallerha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -357,4 +357,5 @@ void	run_game(t_game *game)
 	create_frame(game);
 	create_hooks(game);
 	mlx_loop(game->mlx.mlx_ptr);
+	ft_destroy_game(game);
 }
