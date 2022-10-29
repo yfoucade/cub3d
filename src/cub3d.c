@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yfoucade <yfoucade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 14:48:10 by yfoucade          #+#    #+#             */
-/*   Updated: 2022/10/27 12:13:03 by jallerha         ###   ########.fr       */
+/*   Updated: 2022/10/29 10:15:10 by yfoucade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -266,10 +266,10 @@ void	draw_walls(t_game *game)
 			wallX = game->player_pos.y + game->rt_vars.perpWallDist * game->rt_vars.ray.y;
 		else
 			wallX = game->player_pos.x + game->rt_vars.perpWallDist * game->rt_vars.ray.x;
-		wallX -= floor((wallX));
-		int texX = (int)((1 - wallX) * (double)(texture.width));
-		if(game->rt_vars.side == 0 && game->rt_vars.ray.x > 0) texX = texture.width - texX - 1;
-		if(game->rt_vars.side == 1 && game->rt_vars.ray.y < 0) texX = texture.width - texX - 1;
+		wallX -= floor(wallX);
+		int texX = (int)(wallX * (double)(texture.width));
+		if(game->rt_vars.side == 0 && game->rt_vars.ray.x < 0) texX = texture.width - texX - 1;
+		if(game->rt_vars.side == 1 && game->rt_vars.ray.y > 0) texX = texture.width - texX - 1;
 		// How much to increase the texture coordinate per screen pixel
       	double step = 1.0 * texture.height / lineHeight;
 		// Starting texture coordinate
