@@ -1,38 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_utils.c                                      :+:      :+:    :+:   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/05 23:00:49 by yfoucade          #+#    #+#             */
-/*   Updated: 2022/10/30 17:34:33 by jallerha         ###   ########.fr       */
+/*   Created: 2022/10/30 17:53:56 by jallerha          #+#    #+#             */
+/*   Updated: 2022/10/30 17:54:10 by jallerha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	print_point(char *s1, t_point a, char *s2)
+t_str_list	*ft_split(char *str, char c)
 {
-	if (s1)
-		printf("%s", s1);
-	printf("(%f, %f)", a.x, a.y);
-	if (s2)
-		printf("%s", s2);
-}
+	t_str_list	*res;
+	char		*end;
 
-void	print_game(t_game *game)
-{
-	print_array(game->map);
-	printf("player starting pos: %f, %f\n",
-		game->player_pos.x, game->player_pos.y);
-}
-
-void	print_array(char **array)
-{
-	char	**tmp;
-
-	tmp = array;
-	while (*tmp)
-		printf("%s\n", *tmp++);
+	if (!str)
+		return (NULL);
+	res = NULL;
+	while (*str)
+	{
+		end = str;
+		while (*end && *end != c)
+			++end;
+		if (lst_add_n(&res, str, end))
+		{
+			free_str_list(res);
+			return (NULL);
+		}
+		str = end + (*end == c);
+	}
+	return (res);
 }

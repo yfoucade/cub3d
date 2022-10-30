@@ -1,38 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_utils.c                                      :+:      :+:    :+:   */
+/*   ft_count_words.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/05 23:00:49 by yfoucade          #+#    #+#             */
-/*   Updated: 2022/10/30 17:34:33 by jallerha         ###   ########.fr       */
+/*   Created: 2022/10/30 17:54:24 by jallerha          #+#    #+#             */
+/*   Updated: 2022/10/30 17:54:31 by jallerha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	print_point(char *s1, t_point a, char *s2)
+int	ft_count_words(char *haystack, char *needle)
 {
-	if (s1)
-		printf("%s", s1);
-	printf("(%f, %f)", a.x, a.y);
-	if (s2)
-		printf("%s", s2);
-}
+	int	i;
+	int	j;
+	int	k;
+	int	count;
 
-void	print_game(t_game *game)
-{
-	print_array(game->map);
-	printf("player starting pos: %f, %f\n",
-		game->player_pos.x, game->player_pos.y);
-}
-
-void	print_array(char **array)
-{
-	char	**tmp;
-
-	tmp = array;
-	while (*tmp)
-		printf("%s\n", *tmp++);
+	i = 0;
+	j = 0;
+	k = 0;
+	count = 0;
+	while (haystack[i])
+	{
+		j = 0;
+		k = i;
+		while (needle[j])
+		{
+			if (haystack[k] != needle[j])
+				break ;
+			j++;
+			k++;
+		}
+		if (!needle[j])
+			count++;
+		i++;
+	}
+	return (count);
 }

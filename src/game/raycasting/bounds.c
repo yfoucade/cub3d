@@ -1,38 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_utils.c                                      :+:      :+:    :+:   */
+/*   bounds.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/05 23:00:49 by yfoucade          #+#    #+#             */
-/*   Updated: 2022/10/30 17:34:33 by jallerha         ###   ########.fr       */
+/*   Created: 2022/10/30 18:35:55 by jallerha          #+#    #+#             */
+/*   Updated: 2022/10/30 18:52:43 by jallerha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	print_point(char *s1, t_point a, char *s2)
+void	rc_calc_bounds(t_game *game, int *start, int *end, int *height)
 {
-	if (s1)
-		printf("%s", s1);
-	printf("(%f, %f)", a.x, a.y);
-	if (s2)
-		printf("%s", s2);
-}
+	int	lineHeight;
+	int	drawStart;
+	int	drawEnd;
 
-void	print_game(t_game *game)
-{
-	print_array(game->map);
-	printf("player starting pos: %f, %f\n",
-		game->player_pos.x, game->player_pos.y);
-}
-
-void	print_array(char **array)
-{
-	char	**tmp;
-
-	tmp = array;
-	while (*tmp)
-		printf("%s\n", *tmp++);
+	lineHeight = (int)(WIN_HEIGHT / game->rt_vars.perpWallDist);
+	drawStart = -lineHeight / 2 + WIN_HEIGHT / 2;
+	if(drawStart < 0)
+		drawStart = 0;
+	drawEnd = lineHeight / 2 + WIN_HEIGHT / 2;
+	if(drawEnd >= WIN_HEIGHT)
+		drawEnd = WIN_HEIGHT - 1;
+	*start = drawStart;
+	*end = drawEnd;
+	*height = lineHeight;
 }

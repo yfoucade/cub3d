@@ -1,38 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_utils.c                                      :+:      :+:    :+:   */
+/*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/05 23:00:49 by yfoucade          #+#    #+#             */
-/*   Updated: 2022/10/30 17:34:33 by jallerha         ###   ########.fr       */
+/*   Created: 2022/10/30 17:43:34 by jallerha          #+#    #+#             */
+/*   Updated: 2022/10/30 17:43:43 by jallerha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	print_point(char *s1, t_point a, char *s2)
+void	create_hooks(t_game *game)
 {
-	if (s1)
-		printf("%s", s1);
-	printf("(%f, %f)", a.x, a.y);
-	if (s2)
-		printf("%s", s2);
-}
-
-void	print_game(t_game *game)
-{
-	print_array(game->map);
-	printf("player starting pos: %f, %f\n",
-		game->player_pos.x, game->player_pos.y);
-}
-
-void	print_array(char **array)
-{
-	char	**tmp;
-
-	tmp = array;
-	while (*tmp)
-		printf("%s\n", *tmp++);
+	mlx_hook(game->mlx.win_ptr, 17, 0, ft_redcross, game);
+	mlx_hook(game->mlx.win_ptr, 2, 1, ft_key_press_hook, game);
+	mlx_hook(game->mlx.win_ptr, 3, 2, ft_key_release_hook, game);
+	mlx_loop_hook(game->mlx.mlx_ptr, ft_game_loop, game);
 }

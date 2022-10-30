@@ -1,38 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_utils.c                                      :+:      :+:    :+:   */
+/*   ft_set_color.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/05 23:00:49 by yfoucade          #+#    #+#             */
-/*   Updated: 2022/10/30 17:34:33 by jallerha         ###   ########.fr       */
+/*   Created: 2022/10/30 17:55:02 by jallerha          #+#    #+#             */
+/*   Updated: 2022/10/30 17:55:09 by jallerha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	print_point(char *s1, t_point a, char *s2)
+char	ft_set_color(char *s, t_color **target)
 {
-	if (s1)
-		printf("%s", s1);
-	printf("(%f, %f)", a.x, a.y);
-	if (s2)
-		printf("%s", s2);
-}
-
-void	print_game(t_game *game)
-{
-	print_array(game->map);
-	printf("player starting pos: %f, %f\n",
-		game->player_pos.x, game->player_pos.y);
-}
-
-void	print_array(char **array)
-{
-	char	**tmp;
-
-	tmp = array;
-	while (*tmp)
-		printf("%s\n", *tmp++);
+	if (*target)
+		return (error_msg("Color is set multiple times\n", -1));
+	else
+	{
+		*target = ft_parse_rgb(s);
+		if (!*target)
+			return (FAILURE);
+	}
+	return (SUCCESS);
 }
