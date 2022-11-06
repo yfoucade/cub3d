@@ -6,7 +6,7 @@
 /*   By: yfoucade <yfoucade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 18:01:39 by jallerha          #+#    #+#             */
-/*   Updated: 2022/11/06 20:06:06 by yfoucade         ###   ########.fr       */
+/*   Updated: 2022/11/06 23:41:17 by yfoucade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ void	parse(int ac, char **av, t_game *game)
 		exit(1);
 	}
 	game->init_frame = TRUE;
-	print_game(game);
 }
 
 char	ft_parse(t_str_list *lst, t_color *color)
