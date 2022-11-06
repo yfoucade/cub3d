@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bounds.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yfoucade <yfoucade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 18:35:55 by jallerha          #+#    #+#             */
-/*   Updated: 2022/10/30 18:52:43 by jallerha         ###   ########.fr       */
+/*   Updated: 2022/11/06 20:26:50 by yfoucade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,18 @@
 
 void	rc_calc_bounds(t_game *game, int *start, int *end, int *height)
 {
-	int	lineHeight;
-	int	drawStart;
-	int	drawEnd;
+	int	line_height;
+	int	draw_start;
+	int	draw_end;
 
-	lineHeight = (int)(WIN_HEIGHT / game->rt_vars.perpWallDist);
-	drawStart = -lineHeight / 2 + WIN_HEIGHT / 2;
-	if(drawStart < 0)
-		drawStart = 0;
-	drawEnd = lineHeight / 2 + WIN_HEIGHT / 2;
-	if(drawEnd >= WIN_HEIGHT)
-		drawEnd = WIN_HEIGHT - 1;
-	*start = drawStart;
-	*end = drawEnd;
-	*height = lineHeight;
+	line_height = (int)(WIN_HEIGHT / game->rt_vars.perpWallDist);
+	draw_start = -line_height / 2 + WIN_HEIGHT / 2;
+	if (draw_start < 0)
+		draw_start = 0;
+	draw_end = line_height / 2 + WIN_HEIGHT / 2;
+	if (draw_end >= WIN_HEIGHT)
+		draw_end = WIN_HEIGHT - 1;
+	*start = draw_start;
+	*end = draw_end;
+	*height = line_height;
 }
