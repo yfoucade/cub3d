@@ -6,13 +6,13 @@
 /*   By: yfoucade <yfoucade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 20:13:32 by yfoucade          #+#    #+#             */
-/*   Updated: 2022/10/05 20:38:52 by yfoucade         ###   ########.fr       */
+/*   Updated: 2022/11/06 23:17:18 by yfoucade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memset(void	*s, int	c, size_t n)
+void	*ft_memset(void *s, int c, size_t n)
 {
 	char	*t;
 

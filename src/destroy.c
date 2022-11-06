@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   destroy.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yfoucade <yfoucade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 00:09:48 by jallerha          #+#    #+#             */
-/*   Updated: 2022/10/27 12:20:53 by jallerha         ###   ########.fr       */
+/*   Updated: 2022/11/06 23:11:55 by yfoucade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ void	ft_destroy_mlx(t_game *game)
 
 void	ft_destroy_game(t_game *game)
 {
-	DEBUG_PRINT("game : %p\n", game);
 	ft_destroy_mlx(game);
 	ft_destroy_map(game);
 	ft_destroy_colors(game);

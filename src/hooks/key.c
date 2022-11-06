@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yfoucade <yfoucade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 17:35:55 by jallerha          #+#    #+#             */
-/*   Updated: 2022/10/30 17:42:13 by jallerha         ###   ########.fr       */
+/*   Updated: 2022/11/06 23:16:05 by yfoucade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,15 @@ void	ft_switch_key_state(int keycode, t_game *game, char state)
 		game->pressed_keys.s = state;
 	else if (keycode == 'd' || keycode == 'D')
 		game->pressed_keys.d = state;
-	else if (keycode == XK_Left)
+	else if (keycode == XK_LEFT)
 		game->pressed_keys.left = state;
-	else if (keycode == XK_Right)
+	else if (keycode == XK_RIGHT)
 		game->pressed_keys.right = state;
 }
 
 int	ft_key_press_hook(int keycode, t_game *game)
 {
-	if (keycode == XK_Escape)
+	if (keycode == XK_ESCAPE)
 		ft_redcross(game);
 	ft_switch_key_state(keycode, game, KEY_ON);
 	return (0);

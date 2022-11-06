@@ -6,7 +6,7 @@
 /*   By: yfoucade <yfoucade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 16:49:36 by yfoucade          #+#    #+#             */
-/*   Updated: 2022/11/06 20:16:46 by yfoucade         ###   ########.fr       */
+/*   Updated: 2022/11/06 23:11:37 by yfoucade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@
 # include "libft.h"
 # include "mlx.h"
 
-# define XK_Left 0xff51
-# define XK_Right 0xff53
-# define XK_Escape 0xff1b
+# define XK_LEFT 0xff51
+# define XK_RIGHT 0xff53
+# define XK_ESCAPE 0xff1b
 
 # define FALSE 0
 # define TRUE 1
@@ -68,8 +68,6 @@
 #  define DEBUG 1
 # endif
 
-# define DEBUG_PRINT(...) if (DEBUG) { printf("[%s:%d] ", __FILE__, __LINE__); printf(__VA_ARGS__); }
-
 typedef struct s_file_buffer
 {
 	char	buf[BUFFER_SIZE + 1];
@@ -94,7 +92,7 @@ typedef struct s_keys
 	char	right;
 }	t_keys;
 
-typedef struct	s_img
+typedef struct s_img
 {
 	void	*img_ptr;
 	char	*data_addr;
@@ -105,7 +103,7 @@ typedef struct	s_img
 	int		height;
 }	t_img;
 
-typedef struct	s_mlx
+typedef struct s_mlx
 {
 	void		*mlx_ptr;
 	void		*win_ptr;
@@ -116,21 +114,26 @@ typedef struct	s_mlx
 	t_img		ea_img;
 }	t_mlx;
 
-typedef struct	s_rtvars
+typedef struct s_rtvars
 {
 	int		screen_x;
 	double	camera_x;
 	t_point	ray;
-	int		mapX;
-	int		mapY;
-	t_point	sideDist;
-	t_point	deltaDist;
-	double	perpWallDist;
-	int		stepX;
-	int		stepY;
+	int		map_x;
+	int		map_y;
+	t_point	side_dist;
+	t_point	delta_dist;
+	double	perp_wall_dist;
+	int		step_x;
+	int		step_y;
 	int		hit;
 	int		side;
+	int		draw_start;
+	int		draw_end;
+	int		line_height;
 	t_img	texture;
+	int		tex_x;
+	int		tex_y;
 }	t_rtvars;
 
 typedef struct s_game
@@ -146,122 +149,121 @@ typedef struct s_game
 	t_color		*ceiling_color;
 	t_str_list	*map_lines;
 	char		**map;
-	// t_matrix	matrix;
 	t_mlx		mlx;
 	t_keys		pressed_keys;
 }	t_game;
 
-int		error_msg(char *msg, int exit_value);
+int			error_msg(char *msg, int exit_value);
 
 // bounds.c
-void	rc_calc_bounds(t_game *game, int *start, int *end, int *height);
+void		rc_calc_bounds(t_game *game);
 
 // cub3d.c
-void	draw_walls(t_game *game);
+void		draw_walls(t_game *game);
 
 // dda.c
-void	rc_run_dda(t_game *game);
+void		rc_run_dda(t_game *game);
 
 // destroy.c
-void	ft_destroy_mlx(t_game *game);
-void	ft_destroy_game(t_game *game);
+void		ft_destroy_mlx(t_game *game);
+void		ft_destroy_game(t_game *game);
 
 //distance.c
-void	rc_distance(t_game *game);
+void		rc_distance(t_game *game);
 
 // draw.c
-void	ft_put_pixel(t_game *game, int row, int col, int hex);
-int		ft_get_pixel(t_img	img, int row, int col);
-void	create_frame(t_game *game);
+void		ft_put_pixel(t_game *game, int row, int col, int hex);
+int			ft_get_pixel(t_img	img, int row, int col);
+void		create_frame(t_game *game);
 
 // exit.c
-int		ft_redcross(t_game *game);
+int			ft_redcross(t_game *game);
 
 // get_next_line.c
-char	*get_next_line(int fd);
+char		*get_next_line(int fd);
 
 // hooks/init.c
-void	create_hooks(t_game *game);
+void		create_hooks(t_game *game);
 
 // init.c
-void	create_window(t_game *game);
-char	init_game_data(t_game *game);
+void		create_window(t_game *game);
+char		init_game_data(t_game *game);
 
 // key.c
-char	key_pressed(t_game *game);
-int		ft_key_release_hook(int keycode, t_game *game);
-int		ft_key_press_hook(int keycode, t_game *game);
+char		key_pressed(t_game *game);
+int			ft_key_release_hook(int keycode, t_game *game);
+int			ft_key_press_hook(int keycode, t_game *game);
 
 // loop.c
-int		ft_game_loop(t_game *game);
+int			ft_game_loop(t_game *game);
 
 // parsing/map_data.c
-t_img	get_texture(t_game *game);
-char	set_pos_dir_plane(t_game *game, int row, int col);
-char	textures_set(t_game *game);
-char	add_texture(char *path, t_game *game, t_img *img);
-void	fill_map(t_game *game);
+t_img		get_texture(t_game *game);
+char		set_pos_dir_plane(t_game *game, int row, int col);
+char		textures_set(t_game *game);
+char		add_texture(char *path, t_game *game, t_img *img);
+void		fill_map(t_game *game);
 
 // parsing/parse.c
-void	parse(int ac, char **av, t_game *game);
-char	is_valid_transition(char old, char new_);
-char	check_line(t_game *game, int row, int col, char d_row);
-char	ft_parse(t_str_list *lst, t_color *color);
+void		parse(int ac, char **av, t_game *game);
+char		is_valid_transition(char old, char new_);
+char		check_line(t_game *game, int row, int col, char d_row);
+char		ft_parse(t_str_list *lst, t_color *color);
 
 // parsing/parse_color.c
-char	ft_set_val(t_color *color, char *s, int index);
+char		ft_set_val(t_color *color, char *s, int index);
 
 // parsing/parse_line.c
-char	ft_set_color(char *s, t_color **target);
-char	parse_line(char *line, t_game *game);
+char		ft_set_color(char *s, t_color **target);
+char		parse_line(char *line, t_game *game);
 
 // parsing/read_file.c
-void	fetch_file_content(char *filename, t_game *game);
-char	fetch_loop(int fd, t_game *game);
+void		fetch_file_content(char *filename, t_game *game);
+char		fetch_loop(int fd, t_game *game);
 
 // parsing/sanity.c
-char	map_is_closed(t_game *game);
-char	is_valid_filename(char *name);
+char		map_is_closed(t_game *game);
+char		is_valid_filename(char *name);
 
 // parsing/transform.c
-char	transform_map(t_game *game);
+char		transform_map(t_game *game);
 
 // parsing/types.c
-int		ft_digit_only(char *s, int *offset);
-char	is_empty_line(char *line);
+int			ft_digit_only(char *s, int *offset);
+char		is_empty_line(char *line);
 
 // parsing/utils/ft_parse_rgb.c
-t_color	*ft_parse_rgb(char *s);
+t_color		*ft_parse_rgb(char *s);
 
 // parsing/utils/ft_split.c
 t_str_list	*ft_split(char *str, char c);
 
 // parsing/utils/init.c
-void	init_mlx_ptr(t_game *game);
-char	init_empty_map(t_game *game);
+void		init_mlx_ptr(t_game *game);
+char		init_empty_map(t_game *game);
 
 // position/collisions.c
-char	is_in_wall(t_game *game, t_point pos);
+char		is_in_wall(t_game *game, t_point pos);
 
 // render.c
-void	draw_frame(t_game *game);
+void		draw_frame(t_game *game);
 
 // run.c
-void	run_game(t_game *game);
+void		run_game(t_game *game);
 
 // update.c
-void	update_pos_dir_plane(t_game	*game);
-void	update_plane(t_game *game);
+void		update_pos_dir_plane(t_game	*game);
+void		update_plane(t_game *game);
 
 // vars.c
-void	rc_set_vars(t_game *game);
+void		rc_set_vars(t_game *game);
 
 // wall_collision.c
-double	rc_wall_collision(t_game *game);
+double		rc_wall_collision(t_game *game);
 
 // print_utils.c
-void	print_point(char *s1, t_point a, char *s2);
-void	print_game(t_game *game);
-void	print_array(char **array);
+void		print_point(char *s1, t_point a, char *s2);
+void		print_game(t_game *game);
+void		print_array(char **array);
 
 #endif
