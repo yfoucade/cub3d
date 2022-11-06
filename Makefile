@@ -61,20 +61,23 @@ OBJ = ${SRC:.c=.o}
 
 all: ${NAME}
 
-${NAME}: ${OBJ} libft/libft.a minilibx-linux/libmlx.a
+${NAME}: ${OBJ} libft.a libmlx.a
 	@ echo ${OBJ}
 	${CC} ${CFLAGS} -o $@ ${OBJ} ${LIB}
 
 %.o: %.c includes/cub3d.h includes/math_lib.h
 	${CC} ${CFLAGS} -c -o ${<:.c=.o} $< ${INC}
 
-libft/libft.a:
+libft.a:
 	make -C libft
 	cp libft/libft.a .
 
-minilibx-linux/libmlx.a:
+libmlx.a: includes/mlx.h
 	make -C minilibx-linux
 	cp minilibx-linux/libmlx.a .
+
+includes/mlx.h:
+	cp minilibx-linux/mlx.h includes
 
 clean:
 	${RM} ${OBJ}
