@@ -6,7 +6,7 @@
 /*   By: yfoucade <yfoucade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 17:42:50 by jallerha          #+#    #+#             */
-/*   Updated: 2022/11/06 20:21:40 by yfoucade         ###   ########.fr       */
+/*   Updated: 2022/11/06 20:22:51 by yfoucade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 void	update_plane(t_game *game)
 {
-	// to compute plane, multiply dir by a rotation matrix with param (3*pi/2)
-	// then multiply by target_norm / curr_norm to obtain a vector of target_norm.
 	game->camera_plane = get_perp(game->player_dir, GST_PLANE_SIZE);
 }
 
