@@ -3,14 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   update.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yfoucade <yfoucade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 17:42:50 by jallerha          #+#    #+#             */
-/*   Updated: 2022/10/30 17:43:12 by jallerha         ###   ########.fr       */
+/*   Updated: 2022/11/06 20:21:40 by yfoucade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+void	update_plane(t_game *game)
+{
+	// to compute plane, multiply dir by a rotation matrix with param (3*pi/2)
+	// then multiply by target_norm / curr_norm to obtain a vector of target_norm.
+	game->camera_plane = get_perp(game->player_dir, GST_PLANE_SIZE);
+}
 
 void	update_pos(t_game *game)
 {

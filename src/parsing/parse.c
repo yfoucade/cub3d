@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yfoucade <yfoucade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 18:01:39 by jallerha          #+#    #+#             */
-/*   Updated: 2022/10/30 18:12:38 by jallerha         ###   ########.fr       */
+/*   Updated: 2022/11/06 20:06:06 by yfoucade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ char	ft_parse(t_str_list *lst, t_color *color)
 	return (SUCCESS);
 }
 
-char	check_line(t_game *game, int row, int col, char d_row, char d_col)
+char	check_line(t_game *game, int row, int col, char d_row)
 {
 	char	prev_state;
 
@@ -74,9 +74,9 @@ char	check_line(t_game *game, int row, int col, char d_row, char d_col)
 		}
 		prev_state = game->map[row][col];
 		row += d_row;
-		col += d_col;
+		col += 1 - d_row;
 	}
-	if (ft_is_in_charlist(" 1", game->map[row - d_row][col - d_col]))
+	if (ft_is_in_charlist(" 1", game->map[row - d_row][col + d_row - 1]))
 		return (SUCCESS);
 	return (FAILURE);
 }

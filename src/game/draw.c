@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yfoucade <yfoucade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 17:45:58 by jallerha          #+#    #+#             */
-/*   Updated: 2022/10/30 18:24:18 by jallerha         ###   ########.fr       */
+/*   Updated: 2022/11/06 18:35:03 by yfoucade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,4 @@ void	create_frame(t_game *game)
 			);
 	game->mlx.curr_frame.width = WIN_WIDTH;
 	game->mlx.curr_frame.height = WIN_HEIGHT;
-}
-
-void	draw_walls(t_game *game)
-{
-	
 }

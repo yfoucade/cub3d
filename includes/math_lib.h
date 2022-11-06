@@ -6,7 +6,7 @@
 /*   By: yfoucade <yfoucade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 23:01:04 by yfoucade          #+#    #+#             */
-/*   Updated: 2022/10/07 22:17:25 by yfoucade         ###   ########.fr       */
+/*   Updated: 2022/11/06 19:31:45 by yfoucade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct s_point
 }	t_point;
 
 // math_lib.c
+double	ft_abs(double x);
 t_point	add(t_point a, t_point b);
 t_point	copy(t_point a);
 t_point	create(double x, double y);

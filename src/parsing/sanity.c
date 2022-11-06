@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sanity.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yfoucade <yfoucade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 17:51:31 by jallerha          #+#    #+#             */
-/*   Updated: 2022/10/30 17:59:47 by jallerha         ###   ########.fr       */
+/*   Updated: 2022/11/06 20:03:30 by yfoucade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,12 @@ char	map_is_closed(t_game *game)
 	start_row = -1;
 	start_col = 0;
 	while (++start_row < game->map_height)
-		if (check_line(game, start_row, start_col, 0, 1))
+		if (check_line(game, start_row, start_col, 0))
 			return (FALSE);
 	start_row = 0;
 	start_col = -1;
 	while (++start_col < game->map_width)
-		if (check_line(game, start_row, start_col, 1, 0))
+		if (check_line(game, start_row, start_col, 1))
 			return (FALSE);
 	return (TRUE);
 }
