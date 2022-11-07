@@ -6,7 +6,7 @@ RM = rm -rf
 INC = -Iincludes -Ilibft/includes
 LIB = -L. -lft -lmlx -lX11 -lXext -lm
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re norme
 
 SRC = \
 	src/cub3d.c \
@@ -87,5 +87,8 @@ clean:
 fclean: clean
 	${RM} ${NAME} libft.a libmlx.a minilibx-linux/libmlx.a
 	make -C libft fclean
+
+norme:
+	norminette ${SRC} libft includes/cub3d.h includes/math_lib.h
 
 re: fclean all
