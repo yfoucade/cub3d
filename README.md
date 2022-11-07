@@ -10,6 +10,6 @@ Reste à faire :
 - [x] Erreur quand il n'y a pas de map (ko_map_no_definition.cub)
 - [x] Erreur quand il n'y a pas de joueur sur la map
 (ko_all_mini_size_1.cub)
-- [ ] msg d'erreur apres echec du parsing des couleurs
+- [x] msg d'erreur apres echec du parsing des couleurs
 (ko_F_char_x.cub, x = 1,...,6)
 - [x] segfault while trying to destroy game (ok_SO_space_before_type_1.cub)

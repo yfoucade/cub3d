@@ -6,7 +6,7 @@
 /*   By: yfoucade <yfoucade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 18:01:39 by jallerha          #+#    #+#             */
-/*   Updated: 2022/11/06 23:41:17 by yfoucade         ###   ########.fr       */
+/*   Updated: 2022/11/07 01:31:57 by yfoucade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,10 @@ char	ft_parse(t_str_list *lst, t_color *color)
 	{
 		val = (char *) tmp->str;
 		if (!ft_set_val(color, val, i))
+		{
+			ft_putstr_fd("Error\nInvalid color\n", 2);
 			return (FAILURE);
+		}
 		tmp = tmp->next;
 		i++;
 	}
