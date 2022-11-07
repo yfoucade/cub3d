@@ -6,7 +6,7 @@
 /*   By: yfoucade <yfoucade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 18:11:28 by jallerha          #+#    #+#             */
-/*   Updated: 2022/11/07 01:03:48 by yfoucade         ###   ########.fr       */
+/*   Updated: 2022/11/07 01:12:04 by yfoucade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ t_img	get_texture(t_game *game)
 char	add_texture(char *path, t_game *game, t_img *img)
 {
 	ft_strip(path);
-	if (img)
+	if (img->img_ptr)
 	{
 		ft_putstr_fd("Error\nTexture is defined twice\n", 2);
 		return (FAILURE);
