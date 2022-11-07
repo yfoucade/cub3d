@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yfoucade <yfoucade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 18:00:06 by jallerha          #+#    #+#             */
-/*   Updated: 2022/10/30 18:05:24 by jallerha         ###   ########.fr       */
+/*   Updated: 2022/11/07 02:09:54 by yfoucade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,24 @@ char	add_map_line(t_game *game, char *line)
 	return (SUCCESS);
 }
 
+char	all_chars_valid(char *line)
+{
+	int	i;
+
+	i = 0;
+	while (line[i])
+	{
+		if (!ft_is_in_charlist(" 10NSEW", line[i++]))
+		{
+			ft_putstr_fd("Error\nIllegal character in line: ", 2);
+			ft_putstr_fd(line, 2);
+			ft_putstr_fd("\n", 2);
+			return (FALSE);
+		}
+	}
+	return (TRUE);
+}
+
 char	fetch_loop(int fd, t_game *game)
 {
 	char	*line;
@@ -69,6 +87,8 @@ char	fetch_loop(int fd, t_game *game)
 	}
 	while (line)
 	{
+		if (!all_chars_valid(line))
+			return (free(line), FAILURE);
 		ft_rstrip(line);
 		if (add_map_line(game, line))
 			return (free(line), FAILURE);
