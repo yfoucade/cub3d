@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yfoucade <yfoucade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 17:55:47 by jallerha          #+#    #+#             */
-/*   Updated: 2022/10/30 17:56:01 by jallerha         ###   ########.fr       */
+/*   Updated: 2022/11/07 01:07:23 by yfoucade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,11 @@ char	init_empty_map(t_game *game)
 {
 	int	i;
 
+	if (game->map_height < 3 || game->map_width < 3)
+	{
+		ft_putstr_fd("Error\nInvalid map\n", 2);
+		return (FAILURE);
+	}
 	game->map = malloc(sizeof(char *) * (game->map_height + 1));
 	if (!game->map)
 		return (FAILURE);
