@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_data.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yfoucade <yfoucade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 18:11:28 by jallerha          #+#    #+#             */
-/*   Updated: 2022/10/30 18:19:00 by jallerha         ###   ########.fr       */
+/*   Updated: 2022/11/07 01:03:48 by yfoucade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,11 @@ t_img	get_texture(t_game *game)
 char	add_texture(char *path, t_game *game, t_img *img)
 {
 	ft_strip(path);
+	if (img)
+	{
+		ft_putstr_fd("Error\nTexture is defined twice\n", 2);
+		return (FAILURE);
+	}
 	img->img_ptr = mlx_xpm_file_to_image(game->mlx.mlx_ptr, path,
 			&img->width, &img->height);
 	if (!img->img_ptr)

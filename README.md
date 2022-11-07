@@ -6,7 +6,8 @@ Reste à faire :
 - [x] Rajouter les fonctions dans un header, puisqu'elles ont été déplacées dans d'autre sources
 - [x] Rajouter les nouveaux fichiers source dans le Makefile
 - [x] `cub3D` en sortie au lieu de `cub3d`
-- [ ] Afficher un msg d'erreur quand une texture est definie deux fois (ko_all_fullspace_between_texture_shuffled_duplicate.cub)
+- [x] Afficher un msg d'erreur quand une texture est definie deux fois (ko_all_fullspace_between_texture_shuffled_duplicate.cub)
+- [ ] Erreur quand il n'y a pas de map (ko_map_no_definition.cub)
 - [ ] Erreur quand il n'y a pas de joueur sur la map
 (ko_all_mini_size_1.cub)
 - [ ] msg d'erreur apres echec du parsing des couleurs
