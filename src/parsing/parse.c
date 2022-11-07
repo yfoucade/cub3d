@@ -6,7 +6,7 @@
 /*   By: yfoucade <yfoucade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 18:01:39 by jallerha          #+#    #+#             */
-/*   Updated: 2022/11/07 01:31:57 by yfoucade         ###   ########.fr       */
+/*   Updated: 2022/11/07 01:35:33 by yfoucade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ char	check_line(t_game *game, int row, int col, char d_row)
 	prev_state = game->map[row][col];
 	if (prev_state != ' ' && prev_state != '1')
 	{
-		ft_putstr_fd("Illegal char in line: ", 2);
+		ft_putstr_fd("Error\nIllegal char in line: ", 2);
 		write(2, game->map[row], game->map_width);
 		ft_putstr_fd("\n", 2);
 		return (FAILURE);
@@ -70,7 +70,7 @@ char	check_line(t_game *game, int row, int col, char d_row)
 	{
 		if (!is_valid_transition(prev_state, game->map[row][col]))
 		{
-			ft_putstr_fd("check_line: invalid row\n", 2);
+			ft_putstr_fd("Error\ncheck_line: invalid row\n", 2);
 			ft_putstr_fd(game->map[row], 2);
 			return (FAILURE);
 		}
