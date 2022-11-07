@@ -13,3 +13,4 @@ Reste à faire :
 - [x] msg d'erreur apres echec du parsing des couleurs
 (ko_F_char_x.cub, x = 1,...,6)
 - [x] segfault while trying to destroy game (ok_SO_space_before_type_1.cub)
+- [x] number of rgb values (ko_F_too_many_value_1.cub)
