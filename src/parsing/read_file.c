@@ -6,7 +6,7 @@
 /*   By: yfoucade <yfoucade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 18:00:06 by jallerha          #+#    #+#             */
-/*   Updated: 2022/11/07 02:09:54 by yfoucade         ###   ########.fr       */
+/*   Updated: 2022/11/07 02:13:20 by yfoucade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ char	all_chars_valid(char *line)
 	i = 0;
 	while (line[i])
 	{
-		if (!ft_is_in_charlist(" 10NSEW", line[i++]))
+		if (!ft_is_in_charlist(" 10NSEW\n", line[i++]))
 		{
 			ft_putstr_fd("Error\nIllegal character in line: ", 2);
 			ft_putstr_fd(line, 2);
