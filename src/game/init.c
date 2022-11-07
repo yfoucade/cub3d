@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jallerha <jallerha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yfoucade <yfoucade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 17:43:51 by jallerha          #+#    #+#             */
-/*   Updated: 2022/10/30 18:06:32 by jallerha         ###   ########.fr       */
+/*   Updated: 2022/11/07 01:16:54 by yfoucade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,12 @@ void	create_window(t_game *game)
 
 char	init_game_data(t_game *game)
 {
-	int	row;
-	int	col;
+	int		row;
+	int		col;
+	char	player;
 
 	row = -1;
+	player = 0;
 	while (++row < game->map_height)
 	{
 		col = -1;
@@ -36,10 +38,16 @@ char	init_game_data(t_game *game)
 		{
 			if (ft_is_in_charlist("NEWS", game->map[row][col]))
 			{
+				player = 1;
 				if (set_pos_dir_plane(game, row, col))
 					return (FAILURE);
 			}
 		}
+	}
+	if (!player)
+	{
+		ft_putstr_fd("Error\nMissing player\n", 2);
+		return (FAILURE);
 	}
 	return (SUCCESS);
 }

@@ -6,7 +6,7 @@
 /*   By: yfoucade <yfoucade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/25 00:09:48 by jallerha          #+#    #+#             */
-/*   Updated: 2022/11/06 23:11:55 by yfoucade         ###   ########.fr       */
+/*   Updated: 2022/11/07 01:26:31 by yfoucade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	ft_destroy_map(t_game *game)
 	int	i;
 
 	i = 0;
+	if (!game->map)
+		return ;
 	while (i < game->map_height)
 	{
 		free(game->map[i]);
