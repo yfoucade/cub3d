@@ -6,7 +6,7 @@
 /*   By: yfoucade <yfoucade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 16:49:36 by yfoucade          #+#    #+#             */
-/*   Updated: 2022/11/10 08:45:46 by yfoucade         ###   ########.fr       */
+/*   Updated: 2022/11/10 09:11:18 by yfoucade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,13 +58,13 @@
 
 // Game settings
 # define GST_TILE_SIZE 1
-# define GST_MOVE_SPEED .025
+# define GST_MOVE_SPEED .030
 # define GST_ROT_SPEED .018
 # define GST_DIR_SIZE 1
 # define GST_PLANE_SIZE 1
 # define GST_WALL_HEIGHT 50
 
-# define EPS .00001
+# define EPS .02
 
 # ifndef DEBUG
 #  define DEBUG 1
@@ -245,7 +245,7 @@ void		init_mlx_ptr(t_game *game);
 char		init_empty_map(t_game *game);
 
 // position/collisions.c
-char		is_in_wall(t_game *game, t_point pos);
+void		handle_collisions(t_game *game, t_point *mov);
 
 // render.c
 void		draw_frame(t_game *game);

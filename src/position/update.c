@@ -6,7 +6,7 @@
 /*   By: yfoucade <yfoucade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 17:42:50 by jallerha          #+#    #+#             */
-/*   Updated: 2022/11/06 20:22:51 by yfoucade         ###   ########.fr       */
+/*   Updated: 2022/11/10 09:09:44 by yfoucade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,8 @@ void	update_pos(t_game *game)
 		mov = add(mov, get_perp(game->player_dir, GST_DIR_SIZE));
 	mov = normalize(mov);
 	mov = scalar_mul(mov, GST_MOVE_SPEED);
-	mov = add(game->player_pos, mov);
-	if (!is_in_wall(game, mov))
-		game->player_pos = mov;
+	handle_collisions(game, &mov);
+	game->player_pos = add(game->player_pos, mov);
 }
 
 void	update_dir(t_game *game)
