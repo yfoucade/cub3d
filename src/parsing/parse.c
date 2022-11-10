@@ -6,7 +6,7 @@
 /*   By: yfoucade <yfoucade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 18:01:39 by jallerha          #+#    #+#             */
-/*   Updated: 2022/11/07 01:35:33 by yfoucade         ###   ########.fr       */
+/*   Updated: 2022/11/10 09:21:14 by yfoucade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ void	parse(int ac, char **av, t_game *game)
 	if (ac != 2)
 		error_msg("Usage: cub3d map\n", 1);
 	ft_bzero(game, sizeof(*game));
-	init_mlx_ptr(game);
 	fetch_file_content(av[1], game);
+	init_mlx_ptr(game);
 	if (!textures_set(game) || transform_map(game))
 	{
 		ft_destroy_game(game);
