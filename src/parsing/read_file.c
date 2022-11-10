@@ -6,7 +6,7 @@
 /*   By: yfoucade <yfoucade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 18:00:06 by jallerha          #+#    #+#             */
-/*   Updated: 2022/11/07 02:13:20 by yfoucade         ###   ########.fr       */
+/*   Updated: 2022/11/10 09:54:43 by yfoucade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,16 @@ void	fetch_file_content(char *filename, t_game *game)
 
 	(void)game;
 	if (!is_valid_filename(filename))
+	{
+		ft_destroy_game(game);
 		error_msg("Invalid file name\n", 1);
+	}
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
+	{
+		ft_destroy_game(game);
 		error_msg("Could not open file\n", 1);
+	}
 	if (fetch_loop(fd, game))
 	{
 		close(fd);
