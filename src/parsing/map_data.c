@@ -6,7 +6,7 @@
 /*   By: yfoucade <yfoucade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 18:11:28 by jallerha          #+#    #+#             */
-/*   Updated: 2022/11/07 01:12:04 by yfoucade         ###   ########.fr       */
+/*   Updated: 2022/11/10 08:37:26 by yfoucade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ t_img	get_texture(t_game *game)
 	if (game->rt_vars.side == 0)
 	{
 		if (game->rt_vars.ray.x < 0)
-			return (game->mlx.ea_img);
-		return (game->mlx.we_img);
+			return (game->mlx.we_img);
+		return (game->mlx.ea_img);
 	}
 	if (game->rt_vars.ray.y < 0)
 		return (game->mlx.no_img);
