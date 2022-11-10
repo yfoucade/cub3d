@@ -6,7 +6,7 @@
 /*   By: yfoucade <yfoucade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 16:49:36 by yfoucade          #+#    #+#             */
-/*   Updated: 2022/11/06 23:11:37 by yfoucade         ###   ########.fr       */
+/*   Updated: 2022/11/10 08:45:46 by yfoucade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,12 @@
 // Game settings
 # define GST_TILE_SIZE 1
 # define GST_MOVE_SPEED .025
-# define GST_ROT_SPEED .009
+# define GST_ROT_SPEED .018
 # define GST_DIR_SIZE 1
 # define GST_PLANE_SIZE 1
 # define GST_WALL_HEIGHT 50
+
+# define EPS .00001
 
 # ifndef DEBUG
 #  define DEBUG 1
