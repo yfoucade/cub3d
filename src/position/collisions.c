@@ -6,7 +6,7 @@
 /*   By: yfoucade <yfoucade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 17:42:37 by jallerha          #+#    #+#             */
-/*   Updated: 2022/11/10 13:22:46 by yfoucade         ###   ########.fr       */
+/*   Updated: 2022/11/10 14:28:47 by yfoucade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	handle_collisions(t_game *game, t_point *mov)
 	if (mov->x > 0 && game->map[(int)new_pos.y][(int)(new_pos.x + EPS)] == '1')
 		mov->x = 0;
 	new_pos = add(game->player_pos, *mov);
-	if (mov->x < 0 && game->map[(int)new_pos.y][(int)(new_pos.x)] == '1')
+	if (game->map[(int)new_pos.y][(int)(new_pos.x)] == '1')
 	{
 		mov->x = 0;
 		mov->y = 0;
